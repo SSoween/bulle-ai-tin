@@ -1,0 +1,9 @@
+# Données locales de Janus : jamais dans le dépôt
+janus/snapshots/
+janus/out/
+__pycache__/
+*.pyc
+# Secrets : jamais dans le dépôt
+.env
+*.key
+id_*

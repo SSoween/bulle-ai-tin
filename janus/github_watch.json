@@ -1,0 +1,57 @@
+{
+  "_comment": "Projets GitHub suivis chaque jour par janus/gh_snapshot.py (API publique, 60 requêtes/heure sans jeton ; GITHUB_TOKEN en variable d'environnement, jamais dans le dépôt). Le script relève stars, forks, licence, tickets ouverts, release « latest » et sa date. Compare au rapport de la veille pour la variation.",
+  "repos": [
+    {
+      "repo": "Niko1221/Strata",
+      "name": "Strata",
+      "kind": "moteur d'inférence local (application + CLI)",
+      "readme_version_hint": "bannière du README (ex. app 0.2.15) : peut dépasser la release « latest »",
+      "links": [
+        "releases/latest",
+        "blob/main/SECURITY.md",
+        "blob/main/docs/MODELS.md",
+        "blob/main/docs/COMMUNITY_BENCHMARKS.md"
+      ]
+    },
+    {
+      "repo": "JustVugg/colibri",
+      "name": "Colibri",
+      "kind": "moteur MoE en C pur (experts lus depuis le disque)",
+      "readme_version_hint": "ligne « colibri vX.Y.Z » du README",
+      "links": [
+        "releases/latest",
+        "blob/main/docs/benchmarks.md"
+      ]
+    },
+    {
+      "repo": "ggml-org/llama.cpp",
+      "name": "llama.cpp",
+      "kind": "moteur d'inférence de référence (C/C++)",
+      "links": [
+        "releases"
+      ]
+    },
+    {
+      "repo": "unslothai/unsloth",
+      "name": "Unsloth",
+      "kind": "interface locale, fine-tuning et quantifications GGUF",
+      "links": [
+        "releases"
+      ]
+    }
+  ],
+  "a_evaluer": [
+    "ollama/ollama",
+    "vllm-project/vllm",
+    "turboderp-org/exllamav3",
+    "ml-explore/mlx-lm",
+    "ikawrakow/ik_llama.cpp",
+    "lmstudio-ai"
+  ],
+  "regles": [
+    "Un projet entre dans la liste s'il a au moins une mesure publiée sur matériel grand public OU s'il est cité par un laboratoire ou un outil déjà suivi.",
+    "Stars = signal de popularité, jamais de qualité ni de sécurité. Toujours lire SECURITY.md et le dernier changelog avant de recommander une installation.",
+    "Les débits écrits dans un README sont des mesures d'auteur : étiquette « mesure d'auteur » dans le rapport.",
+    "Un projet dont la dernière release a plus de 90 jours ou qui est archivé passe en « à surveiller »."
+  ]
+}

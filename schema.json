@@ -1,0 +1,1180 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Rapport Bulle-AI-tin (schéma v2)",
+  "description": "Veille IA mondiale. Le niveau d'alerte N0-N4 mesure le risque de bulle IA. Toute mention de modèle s'écrit {{org/Nom}} dans les textes et doit exister dans 'models' avec un lien Hugging Face et un propriétaire.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "date",
+    "period",
+    "alert",
+    "domains",
+    "top_changes",
+    "scenarios",
+    "impacts",
+    "indicators",
+    "actions",
+    "hypotheses",
+    "sources",
+    "models",
+    "hf_trending",
+    "watchlist",
+    "local_ai",
+    "hardware",
+    "finance",
+    "upcoming",
+    "projects",
+    "leads",
+    "coverage",
+    "caveat"
+  ],
+  "properties": {
+    "schema": {
+      "type": "integer",
+      "enum": [
+        2
+      ]
+    },
+    "generator": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "period": {
+      "type": "string"
+    },
+    "config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "zone": {
+          "type": "string"
+        },
+        "focus": {
+          "type": "string"
+        },
+        "frequence": {
+          "type": "string"
+        }
+      }
+    },
+    "alert": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "label",
+        "summary",
+        "change_reason"
+      ],
+      "properties": {
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4
+        },
+        "label": {
+          "type": "string",
+          "enum": [
+            "SAIN",
+            "ECHAUFFEMENT",
+            "TENDU",
+            "SURCHAUFFE",
+            "ECLATEMENT"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "change_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "level",
+          "note"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "finance",
+              "frontier",
+              "open",
+              "local",
+              "hardware",
+              "geo",
+              "tech",
+              "adopt"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 160
+          }
+        }
+      }
+    },
+    "top_changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "strength",
+          "domain",
+          "fact",
+          "mechanism",
+          "effect",
+          "sources"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "strength": {
+            "type": "string",
+            "enum": [
+              "fort",
+              "faible"
+            ]
+          },
+          "domain": {
+            "type": "string"
+          },
+          "fact": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "mechanism": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "effect": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      },
+      "maxItems": 3
+    },
+    "models": {
+      "description": "Registre des modèles cités. Un jeton {{id}} sans entrée ici est refusé par la validation.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "owner",
+          "url"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string",
+            "pattern": "^[A-Z]{2}$"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://huggingface\\.co/"
+          },
+          "open": {
+            "type": "boolean"
+          },
+          "base_owner": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hf_trending": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fetched_at",
+        "top3",
+        "top3_official"
+      ],
+      "properties": {
+        "fetched_at": {
+          "type": "string"
+        },
+        "top3": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rank",
+              "id",
+              "name",
+              "url",
+              "owner",
+              "score"
+            ],
+            "properties": {
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://huggingface\\.co/"
+              },
+              "owner": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "original",
+                  "dérivé",
+                  "quantification"
+                ]
+              },
+              "score": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "downloads": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "task": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string",
+                "maxLength": 300
+              }
+            }
+          },
+          "maxItems": 3
+        },
+        "top3_official": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rank",
+              "id",
+              "name",
+              "url",
+              "owner",
+              "score"
+            ],
+            "properties": {
+              "rank": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 3
+              },
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "pattern": "^https://huggingface\\.co/"
+              },
+              "owner": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "original",
+                  "dérivé",
+                  "quantification"
+                ]
+              },
+              "score": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "downloads": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "task": {
+                "type": "string"
+              },
+              "why": {
+                "type": "string",
+                "maxLength": 300
+              }
+            }
+          },
+          "maxItems": 3
+        },
+        "note": {
+          "type": "string"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "watchlist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "family",
+          "owner",
+          "country",
+          "latest",
+          "next"
+        ],
+        "properties": {
+          "family": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "latest": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "model",
+              "date"
+            ],
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "date": {
+                "type": "string"
+              }
+            }
+          },
+          "next": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "what",
+              "status"
+            ],
+            "properties": {
+              "what": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "aucun",
+                  "rumeur",
+                  "teaser",
+                  "preview",
+                  "poids"
+                ]
+              },
+              "eta": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          },
+          "note": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "local_ai": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "why",
+        "results"
+      ],
+      "properties": {
+        "why": {
+          "type": "string",
+          "maxLength": 300
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "model",
+              "hardware",
+              "tps",
+              "sources"
+            ],
+            "properties": {
+              "model": {
+                "type": "string"
+              },
+              "hardware": {
+                "type": "string"
+              },
+              "setup": {
+                "type": "string"
+              },
+              "ctx": {
+                "type": "string"
+              },
+              "tps": {
+                "type": "string"
+              },
+              "measure": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "gap": {
+          "type": "string"
+        }
+      }
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parts",
+        "decisions"
+      ],
+      "properties": {
+        "parts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "part",
+              "trend",
+              "change",
+              "sources"
+            ],
+            "properties": {
+              "part": {
+                "type": "string",
+                "enum": [
+                  "RAM",
+                  "SSD",
+                  "GPU"
+                ]
+              },
+              "trend": {
+                "type": "string",
+                "enum": [
+                  "up",
+                  "flat",
+                  "down"
+                ]
+              },
+              "change": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "part",
+              "verdict",
+              "buy_now",
+              "wait",
+              "trigger",
+              "sources"
+            ],
+            "properties": {
+              "part": {
+                "type": "string",
+                "enum": [
+                  "RAM",
+                  "SSD",
+                  "GPU"
+                ]
+              },
+              "verdict": {
+                "type": "string",
+                "enum": [
+                  "acheter",
+                  "partiel",
+                  "attendre"
+                ]
+              },
+              "buy_now": {
+                "type": "string"
+              },
+              "wait": {
+                "type": "string"
+              },
+              "trigger": {
+                "type": "string"
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "reco": {
+          "type": "string"
+        }
+      }
+    },
+    "finance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "kind",
+          "value",
+          "status",
+          "sources"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "IPO",
+              "capex",
+              "valorisation",
+              "dette",
+              "marché"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "surveille",
+              "alerte"
+            ]
+          },
+          "note": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "p30",
+          "p90",
+          "p1y",
+          "confidence",
+          "trigger",
+          "justification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "p30": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "v",
+              "lo",
+              "hi"
+            ],
+            "properties": {
+              "v": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "lo": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "hi": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "p90": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "v",
+              "lo",
+              "hi"
+            ],
+            "properties": {
+              "v": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "lo": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "hi": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "p1y": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "v",
+              "lo",
+              "hi"
+            ],
+            "properties": {
+              "v": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "lo": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "hi": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+              }
+            }
+          },
+          "confidence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "justification": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scenario_id",
+          "gpu",
+          "ram",
+          "ssd",
+          "cloud",
+          "local",
+          "invest"
+        ],
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "gpu": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "ram": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "ssd": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "cloud": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "local": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "invest": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          }
+        }
+      }
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "current",
+          "up",
+          "down",
+          "status"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "current": {
+            "type": "string"
+          },
+          "up": {
+            "type": "string"
+          },
+          "down": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "loin",
+              "approche",
+              "franchi"
+            ]
+          }
+        }
+      },
+      "maxItems": 5
+    },
+    "upcoming": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "owner",
+          "eta",
+          "confidence",
+          "sources"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "eta": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "note": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "level",
+          "text",
+          "status"
+        ],
+        "properties": {
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 3
+          },
+          "text": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "fait",
+              "afaire",
+              "interdit"
+            ]
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "urgent",
+              "mois",
+              "plus_tard"
+            ]
+          }
+        }
+      }
+    },
+    "hypotheses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "text",
+          "verdict"
+        ],
+        "properties": {
+          "text": {
+            "type": "string"
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "juste",
+              "faux",
+              "indetermine",
+              "nouveau"
+            ]
+          },
+          "comment": {
+            "type": "string"
+          },
+          "eval_date": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "n",
+          "title",
+          "region"
+        ],
+        "properties": {
+          "n": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "title": {
+            "type": "string"
+          },
+          "publisher": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string",
+            "enum": [
+              "AS",
+              "EU",
+              "NA",
+              "ME",
+              "AF",
+              "LA",
+              "OC",
+              "GLOBAL"
+            ]
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "repo",
+          "owner",
+          "kind",
+          "license",
+          "stars",
+          "why",
+          "sources"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "repo": {
+            "type": "string",
+            "pattern": "^https://github\\.com/"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "stars": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "forks": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "version": {
+            "type": "string"
+          },
+          "why": {
+            "type": "string",
+            "maxLength": 400
+          },
+          "watch": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "label",
+                "url"
+              ],
+              "properties": {
+                "label": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https://"
+                }
+              }
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        }
+      }
+    },
+    "leads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "title",
+          "channel",
+          "url",
+          "takeaway",
+          "verify"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "topic": {
+            "type": "string"
+          },
+          "tools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "takeaway": {
+            "type": "string",
+            "maxLength": 400
+          },
+          "verify": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "caveat": {
+      "type": "string"
+    }
+  }
+}

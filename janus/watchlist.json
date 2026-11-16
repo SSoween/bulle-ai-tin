@@ -1,0 +1,111 @@
+{
+  "_comment": "Modèles préférés suivis chaque jour. À corriger par Gaëtan : famille, org Hugging Face, modèles épinglés. Semé d'après ses essais locaux (Qwen, DeepSeek) et le Deep Field ; Gemma, Mistral, Kimi et GLM ajoutés pour garder une vue internationale.",
+  "how": {
+    "principe": "Une mise à niveau n'est jamais crue sur une seule source. Elle monte une échelle de certitude, et le rapport affiche le palier atteint.",
+    "echelle": [
+      {
+        "palier": "rumeur",
+        "preuve": "Un tiers (média, blog, agrégateur) l'évoque, sans lien officiel. Ne compte jamais comme fait."
+      },
+      {
+        "palier": "teaser",
+        "preuve": "Le laboratoire lui-même l'annonce : blog officiel, compte du labo, keynote datée."
+      },
+      {
+        "palier": "preview",
+        "preuve": "Accès officiel mesurable : API en préversion, fiche modèle gated, benchmark publié par le labo."
+      },
+      {
+        "palier": "poids",
+        "preuve": "Dépôt officiel sur Hugging Face dans l'org du laboratoire, avec fichiers de poids téléchargeables."
+      }
+    ],
+    "signaux_deterministes_hf": [
+      "Nouveau dépôt dans l'org du laboratoire (API: /api/models?author=<org>&sort=createdAt), comparé au relevé de la veille.",
+      "Tag d'architecture annonciateur dans un dépôt existant (ex. Qwen3.8-Flash-Next porte l'architecture 'qwen4_exp').",
+      "Dépôts nommés d'après la future version par des comptes tiers (ex. 'Qwen4-27B-NVFP4') : traités comme du BRUIT tant que l'org officielle n'a rien publié."
+    ],
+    "signaux_llm": "Blogs et fils officiels du laboratoire (voir sources.json, domaine 'frontier' ou 'open') : le LLM extrait la date, le nom et le palier, et cite le document."
+  },
+  "watch": [
+    {
+      "family": "Qwen",
+      "hf_org": "Qwen",
+      "owner": "Alibaba",
+      "country": "CN",
+      "pinned": [
+        "Qwen/Qwen3.8-27B",
+        "Qwen/Qwen3.8-Flash-Next"
+      ],
+      "next_hint": "Qwen4",
+      "official_feeds": [
+        "qwenlm-blog"
+      ]
+    },
+    {
+      "family": "DeepSeek",
+      "hf_org": "deepseek-ai",
+      "owner": "DeepSeek",
+      "country": "CN",
+      "pinned": [
+        "deepseek-ai/DeepSeek-V4.1-Flash"
+      ],
+      "next_hint": "V4.2 / V5",
+      "official_feeds": [
+        "deepseek-updates"
+      ]
+    },
+    {
+      "family": "Gemma",
+      "hf_org": "google",
+      "owner": "Google",
+      "country": "US",
+      "pinned": [
+        "google/gemma-4-31B-it"
+      ],
+      "next_hint": "Gemma 4.x / 5",
+      "official_feeds": [
+        "google-ai-blog"
+      ]
+    },
+    {
+      "family": "Mistral",
+      "hf_org": "mistralai",
+      "owner": "Mistral AI",
+      "country": "FR",
+      "pinned": [
+        "mistralai/Mistral-Medium-3.5-128B"
+      ],
+      "next_hint": "Mistral Large 4",
+      "official_feeds": [
+        "mistral-news"
+      ]
+    },
+    {
+      "family": "Kimi",
+      "hf_org": "moonshotai",
+      "owner": "Moonshot AI",
+      "country": "CN",
+      "pinned": [
+        "moonshotai/Kimi-K3"
+      ],
+      "next_hint": "K3.x",
+      "official_feeds": [
+        "moonshot-news"
+      ]
+    },
+    {
+      "family": "GLM",
+      "hf_org": "zai-org",
+      "owner": "Zhipu AI (Z.ai)",
+      "country": "CN",
+      "pinned": [
+        "zai-org/GLM-5.3-Flash"
+      ],
+      "next_hint": "GLM-5.4 / 6",
+      "official_feeds": [
+        "zai-blog"
+      ]
+    }
+  ]
+}

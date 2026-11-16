@@ -1,0 +1,748 @@
+{
+  "_comment": "Registre des sources Bulle-AI-tin. Règles : mondial, objectif, officiel et générique d'abord. Chaque entrée porte une région (AS, EU, NA, ME, AF, LA, OC, GLOBAL) et un type. Objectif de couverture à tenir : Asie ≥ 1/3, Europe ≥ 1/4, Amérique du Nord ≤ 1/4 (voir fetch_sources.py --coverage). verifie=false : à tester au premier run. L'ordre fixe les numéros [n] : ajouter à la FIN, ne jamais réordonner.",
+  "coverage_targets": {
+    "AS_min": 0.33,
+    "EU_min": 0.25,
+    "NA_max": 0.25
+  },
+  "sources": [
+    {
+      "id": "hf-api-trending",
+      "title": "API tendances Hugging Face",
+      "publisher": "Hugging Face",
+      "url": "https://huggingface.co/api/models?sort=trendingScore&limit=30",
+      "domains": [
+        "open"
+      ],
+      "region": "GLOBAL",
+      "type": "données",
+      "verifie": true,
+      "_note": "Lu par janus/hf_snapshot.py, pas par le LLM. Source des Top 3 et de leur variation."
+    },
+    {
+      "id": "hf-papers",
+      "title": "Papers du jour",
+      "publisher": "Hugging Face",
+      "url": "https://huggingface.co/papers",
+      "domains": [
+        "tech"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Recherche à venir ; chaque article est rattaché à ses auteurs et institutions."
+    },
+    {
+      "id": "hf-blog",
+      "title": "Blog Hugging Face",
+      "publisher": "Hugging Face",
+      "url": "https://huggingface.co/blog",
+      "domains": [
+        "open",
+        "local"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "qwenlm-blog",
+      "title": "Blog Qwen",
+      "publisher": "Alibaba (Qwen)",
+      "url": "https://qwenlm.github.io/blog/",
+      "domains": [
+        "open",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false,
+      "_note": "Source primaire pour Qwen4 : teasers et notes de version."
+    },
+    {
+      "id": "deepseek-updates",
+      "title": "Journal des mises à jour API",
+      "publisher": "DeepSeek",
+      "url": "https://api-docs.deepseek.com/updates",
+      "domains": [
+        "open",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "zai-blog",
+      "title": "Blog Z.ai",
+      "publisher": "Zhipu AI (Z.ai)",
+      "url": "https://z.ai/blog",
+      "domains": [
+        "open",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "minimax-news",
+      "title": "Actualités MiniMax",
+      "publisher": "MiniMax",
+      "url": "https://www.minimax.io/news",
+      "domains": [
+        "open",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "moonshot-news",
+      "title": "Actualités Moonshot AI (Kimi)",
+      "publisher": "Moonshot AI",
+      "url": "https://www.moonshot.ai/",
+      "domains": [
+        "open",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false,
+      "_note": "URL à confirmer au premier run ; sinon suivre l'org HF moonshotai."
+    },
+    {
+      "id": "mistral-news",
+      "title": "Actualités Mistral AI",
+      "publisher": "Mistral AI",
+      "url": "https://mistral.ai/news",
+      "domains": [
+        "open",
+        "frontier",
+        "adopt"
+      ],
+      "region": "EU",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "google-ai-blog",
+      "title": "Blog Google AI / DeepMind",
+      "publisher": "Google",
+      "url": "https://blog.google/technology/ai/",
+      "domains": [
+        "frontier",
+        "open"
+      ],
+      "region": "NA",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "tii-falcon",
+      "title": "Falcon LLM",
+      "publisher": "TII (Abou Dabi)",
+      "url": "https://falconllm.tii.ae/",
+      "domains": [
+        "open"
+      ],
+      "region": "ME",
+      "type": "laboratoire",
+      "verifie": false,
+      "_note": "Laboratoire du Moyen-Orient : peu couvert par les médias anglo-saxons."
+    },
+    {
+      "id": "sarvam-blog",
+      "title": "Blog Sarvam AI",
+      "publisher": "Sarvam AI (Inde)",
+      "url": "https://www.sarvam.ai/blogs",
+      "domains": [
+        "open"
+      ],
+      "region": "AS",
+      "type": "laboratoire",
+      "verifie": false,
+      "_note": "Modèles pour les langues indiennes."
+    },
+    {
+      "id": "swiss-ai-apertus",
+      "title": "Apertus, LLM public suisse",
+      "publisher": "Swiss AI Initiative (EPFL, ETH)",
+      "url": "https://www.swiss-ai.org/apertus",
+      "domains": [
+        "open"
+      ],
+      "region": "EU",
+      "type": "laboratoire",
+      "verifie": false
+    },
+    {
+      "id": "github-api",
+      "title": "API GitHub : stars, forks, licence, dernière release des projets suivis",
+      "publisher": "GitHub",
+      "url": "https://api.github.com/repos/",
+      "domains": [
+        "local",
+        "open"
+      ],
+      "region": "GLOBAL",
+      "type": "données",
+      "verifie": true,
+      "_note": "Lue par janus/gh_snapshot.py, pas par le LLM. La release marquée « latest » peut retarder sur le README : le script relève les deux."
+    },
+    {
+      "id": "strata-repo",
+      "title": "Strata, moteur d'inférence local",
+      "publisher": "Niko1221 (Strata)",
+      "url": "https://github.com/Niko1221/Strata",
+      "domains": [
+        "local"
+      ],
+      "region": "GLOBAL",
+      "type": "communauté (bruit sauf chiffre daté)",
+      "verifie": true,
+      "_note": "Projet suivi. Lire aussi SECURITY.md et les notes de version."
+    },
+    {
+      "id": "colibri-repo",
+      "title": "Colibri, moteur MoE en C",
+      "publisher": "JustVugg (Colibri)",
+      "url": "https://github.com/JustVugg/colibri",
+      "domains": [
+        "local"
+      ],
+      "region": "GLOBAL",
+      "type": "communauté (bruit sauf chiffre daté)",
+      "verifie": true,
+      "_note": "Projet suivi. Débits d'auteur très faibles hors gros matériel."
+    },
+    {
+      "id": "yt-eliott-meunier",
+      "title": "Chaîne YouTube d'Eliott Meunier (RSS officiel + transcripts optionnels)",
+      "publisher": "Eliott Meunier (France)",
+      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCPo1nFSGNkyzrA9yvtkEvIw",
+      "domains": [
+        "adopt",
+        "tech"
+      ],
+      "region": "EU",
+      "type": "analyse secondaire",
+      "verifie": false,
+      "_note": "Créateur francophone (Second Cerveau IA, Obsidian, Claude Code, n8n, agents). Analyse secondaire : les vidéos servent à repérer des outils et des usages, qui deviennent des PISTES à confirmer, jamais des faits. Lu par janus/fetch_youtube.py (RSS public ; transcripts désactivés par défaut)."
+    },
+    {
+      "id": "llamacpp-releases",
+      "title": "Versions llama.cpp (Atom)",
+      "publisher": "ggml-org / llama.cpp",
+      "url": "https://github.com/ggml-org/llama.cpp/releases.atom",
+      "domains": [
+        "local"
+      ],
+      "region": "GLOBAL",
+      "type": "données",
+      "verifie": false,
+      "_note": "Nouveautés moteur : MTP, quantifications, nouvelles architectures."
+    },
+    {
+      "id": "unsloth-blog",
+      "title": "Blog Unsloth",
+      "publisher": "Unsloth",
+      "url": "https://unsloth.ai/blog",
+      "domains": [
+        "local",
+        "open"
+      ],
+      "region": "GLOBAL",
+      "type": "communauté (bruit sauf chiffre daté)",
+      "verifie": false,
+      "_note": "Quantifications GGUF des nouveaux modèles, souvent dans la journée."
+    },
+    {
+      "id": "hardware-corner",
+      "title": "Tests matériel LLM",
+      "publisher": "Hardware Corner",
+      "url": "https://www.hardware-corner.net/gpu-llm-benchmarks/rtx-5090/",
+      "domains": [
+        "local",
+        "hardware"
+      ],
+      "region": "GLOBAL",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Débits mesurés par carte et par modèle : base du bloc IA locale."
+    },
+    {
+      "id": "tomshardware-ai",
+      "title": "Tom's Hardware, IA",
+      "publisher": "Tom's Hardware",
+      "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence",
+      "domains": [
+        "local",
+        "hardware"
+      ],
+      "region": "NA",
+      "type": "presse",
+      "verifie": false
+    },
+    {
+      "id": "notebookcheck",
+      "title": "Notebookcheck, actualités",
+      "publisher": "Notebookcheck (Allemagne)",
+      "url": "https://www.notebookcheck.net/News.1.html",
+      "domains": [
+        "hardware",
+        "local"
+      ],
+      "region": "EU",
+      "type": "presse",
+      "verifie": false
+    },
+    {
+      "id": "epoch-ai",
+      "title": "Epoch AI, données et analyses",
+      "publisher": "Epoch AI",
+      "url": "https://epoch.ai/data-insights",
+      "domains": [
+        "tech",
+        "finance"
+      ],
+      "region": "GLOBAL",
+      "type": "données",
+      "verifie": false,
+      "_note": "Mesures sur le calcul, les coûts d'entraînement et la consommation : source neutre."
+    },
+    {
+      "id": "trendforce-press",
+      "title": "Communiqués TrendForce (DRAM, NAND, GPU)",
+      "publisher": "TrendForce (Taïwan)",
+      "url": "https://www.trendforce.com/presscenter/news",
+      "domains": [
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "données",
+      "verifie": false,
+      "_note": "Référence des prix contractuels DRAM et NAND."
+    },
+    {
+      "id": "counterpoint-insights",
+      "title": "Memory price tracker",
+      "publisher": "Counterpoint Research",
+      "url": "https://www.counterpointresearch.com/insights/",
+      "domains": [
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "données",
+      "verifie": false
+    },
+    {
+      "id": "dramexchange",
+      "title": "DRAMeXchange, prix spot et contrat",
+      "publisher": "TrendForce / DRAMeXchange",
+      "url": "https://www.dramexchange.com/",
+      "domains": [
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "données",
+      "verifie": false,
+      "_note": "Peut exiger JavaScript."
+    },
+    {
+      "id": "tsmc-news",
+      "title": "Communiqués TSMC",
+      "publisher": "TSMC (Taïwan)",
+      "url": "https://pr.tsmc.com/english/latest-news",
+      "domains": [
+        "hardware",
+        "finance"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "samsung-newsroom",
+      "title": "Samsung Newsroom (mémoire)",
+      "publisher": "Samsung (Corée du Sud)",
+      "url": "https://news.samsung.com/global/",
+      "domains": [
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "skhynix-news",
+      "title": "SK hynix Newsroom",
+      "publisher": "SK hynix (Corée du Sud)",
+      "url": "https://news.skhynix.com/",
+      "domains": [
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false,
+      "_note": "HBM et DRAM : le goulot actuel."
+    },
+    {
+      "id": "asml-news",
+      "title": "ASML, actualités",
+      "publisher": "ASML (Pays-Bas)",
+      "url": "https://www.asml.com/en/news",
+      "domains": [
+        "hardware"
+      ],
+      "region": "EU",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Lithographie EUV : plafond de l'offre à long terme."
+    },
+    {
+      "id": "pcwatch-japan",
+      "title": "PC Watch (japonais)",
+      "publisher": "Impress PC Watch (Japon)",
+      "url": "https://pc.watch.impress.co.jp/",
+      "domains": [
+        "hardware",
+        "local"
+      ],
+      "region": "AS",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Page en japonais ; peu relayé en anglais."
+    },
+    {
+      "id": "sec-edgar-s1",
+      "title": "Dépôts S-1 récents (IPO américaines)",
+      "publisher": "SEC (États-Unis)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&type=S-1&count=40&output=atom",
+      "domains": [
+        "finance"
+      ],
+      "region": "NA",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Source primaire des IPO : c'est le dépôt qui compte, pas la rumeur."
+    },
+    {
+      "id": "hkex-listings",
+      "title": "Nouvelles inscriptions",
+      "publisher": "HKEX (Hong Kong)",
+      "url": "https://www.hkex.com.hk/News/News-Release?sc_lang=en",
+      "domains": [
+        "finance"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Zhipu et MiniMax ont été cotées ici avant toute IA américaine."
+    },
+    {
+      "id": "ecb-fsr",
+      "title": "Financial Stability Review",
+      "publisher": "Banque centrale européenne",
+      "url": "https://www.ecb.europa.eu/pub/financial-stability/html/index.en.html",
+      "domains": [
+        "finance"
+      ],
+      "region": "EU",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Semestriel : lire le chapitre sur les valorisations tech/IA."
+    },
+    {
+      "id": "boe-fpc",
+      "title": "Financial Policy Committee",
+      "publisher": "Banque d'Angleterre",
+      "url": "https://www.bankofengland.co.uk/financial-stability",
+      "domains": [
+        "finance"
+      ],
+      "region": "EU",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "fed-fsr",
+      "title": "Financial Stability Report",
+      "publisher": "Réserve fédérale (États-Unis)",
+      "url": "https://www.federalreserve.gov/publications/financial-stability-report.htm",
+      "domains": [
+        "finance"
+      ],
+      "region": "NA",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "bis-press",
+      "title": "Communiqués et Quarterly Review",
+      "publisher": "Banque des règlements internationaux",
+      "url": "https://www.bis.org/press/",
+      "domains": [
+        "finance"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false,
+      "_note": "Vision non américaine des risques de marché."
+    },
+    {
+      "id": "imf-blog",
+      "title": "Blog du FMI",
+      "publisher": "FMI",
+      "url": "https://www.imf.org/en/Blogs",
+      "domains": [
+        "finance",
+        "geo"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "scmp-tech",
+      "title": "SCMP, technologie",
+      "publisher": "South China Morning Post (Hong Kong)",
+      "url": "https://www.scmp.com/tech",
+      "domains": [
+        "frontier",
+        "finance",
+        "geo"
+      ],
+      "region": "AS",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Meilleure couverture anglophone de l'IA chinoise."
+    },
+    {
+      "id": "businessday-ng",
+      "title": "BusinessDay, technologie (Nigeria)",
+      "publisher": "BusinessDay (Nigeria)",
+      "url": "https://businessday.ng/technology/",
+      "domains": [
+        "finance",
+        "adopt"
+      ],
+      "region": "AF",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Regard africain sur les IPO et l'adoption."
+    },
+    {
+      "id": "tribune-pk-business",
+      "title": "Express Tribune, affaires (Pakistan)",
+      "publisher": "The Express Tribune (Pakistan)",
+      "url": "https://tribune.com.pk/business",
+      "domains": [
+        "finance"
+      ],
+      "region": "AS",
+      "type": "presse",
+      "verifie": false
+    },
+    {
+      "id": "nikkei-asia-free",
+      "title": "Nikkei Asia (articles gratuits)",
+      "publisher": "Nikkei Asia (Japon)",
+      "url": "https://asia.nikkei.com/Business/Technology",
+      "domains": [
+        "finance",
+        "hardware"
+      ],
+      "region": "AS",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Partiellement payant : garder seulement si le texte sort sans compte."
+    },
+    {
+      "id": "aljazeera-economy",
+      "title": "Al Jazeera, économie",
+      "publisher": "Al Jazeera (Qatar)",
+      "url": "https://www.aljazeera.com/economy",
+      "domains": [
+        "finance",
+        "geo"
+      ],
+      "region": "ME",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Capitaux du Golfe dans l'IA et les centres de données."
+    },
+    {
+      "id": "eu-ai-office",
+      "title": "Bureau européen de l'IA",
+      "publisher": "Commission européenne",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "EU",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "oecd-ai",
+      "title": "OECD.AI, observatoire des politiques",
+      "publisher": "OCDE",
+      "url": "https://oecd.ai/en/",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "unesco-ai",
+      "title": "Éthique de l'IA",
+      "publisher": "UNESCO",
+      "url": "https://www.unesco.org/en/artificial-intelligence",
+      "domains": [
+        "geo"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "itu-ai",
+      "title": "AI for Good",
+      "publisher": "UIT (ONU)",
+      "url": "https://aiforgood.itu.int/",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "GLOBAL",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "uk-aisi",
+      "title": "Blog de l'AI Security Institute",
+      "publisher": "Gouvernement britannique",
+      "url": "https://www.aisi.gov.uk/blog",
+      "domains": [
+        "geo",
+        "frontier"
+      ],
+      "region": "EU",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "indiaai",
+      "title": "Actualités IndiaAI",
+      "publisher": "Gouvernement de l'Inde",
+      "url": "https://indiaai.gov.in/news",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "imda-sg",
+      "title": "Communiqués IMDA (IA)",
+      "publisher": "Gouvernement de Singapour",
+      "url": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "AS",
+      "type": "institution",
+      "verifie": false
+    },
+    {
+      "id": "xinhua-tech",
+      "title": "Xinhua, technologie",
+      "publisher": "Xinhua (Chine)",
+      "url": "https://english.news.cn/tech/index.htm",
+      "domains": [
+        "geo",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "média d'État (signal faible, à recouper)",
+      "verifie": false,
+      "_note": "Agence d'État : signal faible, à recouper. Utile pour les annonces de politique industrielle."
+    },
+    {
+      "id": "korea-herald-tech",
+      "title": "Korea Herald, technologie",
+      "publisher": "The Korea Herald (Corée du Sud)",
+      "url": "https://www.koreaherald.com/business/tech",
+      "domains": [
+        "hardware",
+        "frontier"
+      ],
+      "region": "AS",
+      "type": "presse",
+      "verifie": false
+    },
+    {
+      "id": "heise-de",
+      "title": "heise online (Atom)",
+      "publisher": "heise (Allemagne)",
+      "url": "https://www.heise.de/rss/heise-atom.xml",
+      "domains": [
+        "tech",
+        "hardware",
+        "adopt"
+      ],
+      "region": "EU",
+      "type": "presse",
+      "verifie": false,
+      "_note": "Presse tech allemande, en allemand."
+    },
+    {
+      "id": "euractiv-digital",
+      "title": "Euractiv, numérique",
+      "publisher": "Euractiv (Bruxelles)",
+      "url": "https://www.euractiv.com/section/digital/",
+      "domains": [
+        "geo",
+        "adopt"
+      ],
+      "region": "EU",
+      "type": "presse",
+      "verifie": false
+    },
+    {
+      "id": "iot-analytics",
+      "title": "IoT Analytics, analyses IA",
+      "publisher": "IoT Analytics (Allemagne)",
+      "url": "https://iot-analytics.com/",
+      "domains": [
+        "finance",
+        "adopt"
+      ],
+      "region": "EU",
+      "type": "données",
+      "verifie": false,
+      "_note": "Cabinet d'études : analyses = bruit, sauf chiffre daté."
+    }
+  ],
+  "_gaps": {
+    "Amérique latine": "Aucune source vérifiée. Pistes à tester : CEPAL (ONU), banques centrales du Brésil et du Chili, presse économique brésilienne.",
+    "Afrique": "Une source de presse (BusinessDay, Nigeria). Pistes : Union africaine, Smart Africa, Rest of World.",
+    "Océanie": "Aucune. Piste : CSIRO / Gouvernement australien (AI Safety)."
+  },
+  "_non_retenues": {
+    "Bloomberg, Financial Times, WSJ, Reuters": "Payants ou anti-robots, et conditions qui interdisent la collecte. Leurs faits arrivent via les reprises (BusinessDay, Tribune, SCMP).",
+    "X / Twitter, Reddit (r/LocalLLaMA), YouTube": "Opinions et rumeurs : bruit. Utiles en lecture humaine, jamais en preuve d'un fait. Exception : un compte officiel de laboratoire sert de teaser (palier 2), pas de preuve.",
+    "Classements de LLM (LMArena, Artificial Analysis)": "Applications JavaScript, et métriques contestées. Retenus seulement si un chiffre daté est repris par une source listée.",
+    "Sites de rumeurs matériel (leakers)": "Les rumeurs sur les RTX 50 Super ou les futurs GPU restent au palier 'rumeur' tant que NVIDIA, AMD ou un fabricant de mémoire n'a rien annoncé.",
+    "Agrégateurs SEO (comparateurs, 'AI news intelligence')": "Reprises sans source primaire. Un fait ne compte que s'il remonte à un document de la liste ci-dessus."
+  }
+}

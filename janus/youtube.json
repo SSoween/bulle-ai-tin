@@ -1,0 +1,25 @@
+{
+  "_comment": "Chaînes YouTube lues par fetch_youtube.py. Analyse SECONDAIRE : les vidéos servent à repérer des outils et des usages ; le résultat devient des 'leads' (pistes à confirmer), jamais des faits. 'transcripts' est désactivé par défaut : l'activer est un choix de ton côté (conditions d'utilisation de YouTube, yt-dlp à installer sur le serveur).",
+  "channels": [
+    {
+      "id": "UCPo1nFSGNkyzrA9yvtkEvIw",
+      "handle": "@EliottMeunier",
+      "publisher": "Eliott Meunier (France) : créateur, analyse secondaire, à recouper",
+      "region": "EU",
+      "lang": "fr",
+      "domains": ["adopt", "tech"],
+      "topics": "Second Cerveau IA, Obsidian, Claude Code, n8n, agents personnalisés, productivité",
+      "transcripts": false,
+      "max_videos": 3,
+      "max_chars_per_video": 12000
+    }
+  ],
+  "since_days": 2,
+  "pause_seconds": 3,
+  "extraction_rules": [
+    "Retenir uniquement : (1) les outils, projets GitHub ou modèles nommés et démontrés, (2) les usages d'entreprise concrets, (3) les chiffres datés annoncés à l'écran.",
+    "Chaque élément retenu devient une piste : titre, vidéo, date, outils, ce qu'il faut confirmer et auprès de quelle source primaire (dépôt GitHub, fiche Hugging Face, communiqué).",
+    "Un avis, une prévision ou un résultat de démonstration sans méthode est du bruit.",
+    "Un nom de modèle cité à l'oral s'écrit {{org/Nom}} seulement si l'identifiant Hugging Face a été retrouvé dans une source ; sinon le nom reste dans 'tools' et la piste demande la confirmation."
+  ]
+}

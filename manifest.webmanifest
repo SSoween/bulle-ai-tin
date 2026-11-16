@@ -1,0 +1,15 @@
+{
+  "name": "Bulle-AI-tin",
+  "short_name": "Bulletin",
+  "description": "Veille IA mondiale : risque de bulle, modèles ouverts, IA locale, matériel. Ce qui a changé, sans catastrophisme.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060F1C",
+  "theme_color": "#060F1C",
+  "lang": "fr",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

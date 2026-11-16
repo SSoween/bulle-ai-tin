@@ -1,0 +1,192 @@
+{
+  "_comment": "Org Hugging Face -> propriétaire et pays. 'labs' = laboratoires officiels (kind=original). 'quantizers' = ré-empaqueteurs (kind=quantification). Toute autre org est 'communauté' : le propriétaire affiché est celui du modèle de base (tag base_model:) si connu, ex. « Communauté (base : Alibaba) ». À compléter à la main ; ne jamais deviner un propriétaire.",
+  "labs": {
+    "Qwen": {
+      "owner": "Alibaba",
+      "country": "CN"
+    },
+    "deepseek-ai": {
+      "owner": "DeepSeek",
+      "country": "CN"
+    },
+    "moonshotai": {
+      "owner": "Moonshot AI",
+      "country": "CN"
+    },
+    "zai-org": {
+      "owner": "Zhipu AI (Z.ai)",
+      "country": "CN"
+    },
+    "MiniMaxAI": {
+      "owner": "MiniMax",
+      "country": "CN"
+    },
+    "tencent": {
+      "owner": "Tencent",
+      "country": "CN"
+    },
+    "baidu": {
+      "owner": "Baidu",
+      "country": "CN"
+    },
+    "ByteDance-Seed": {
+      "owner": "ByteDance",
+      "country": "CN"
+    },
+    "XiaomiMiMo": {
+      "owner": "Xiaomi",
+      "country": "CN"
+    },
+    "stepfun-ai": {
+      "owner": "StepFun",
+      "country": "CN"
+    },
+    "inclusionAI": {
+      "owner": "Ant Group",
+      "country": "CN"
+    },
+    "internlm": {
+      "owner": "Shanghai AI Lab",
+      "country": "CN"
+    },
+    "meituan-longcat": {
+      "owner": "Meituan",
+      "country": "CN"
+    },
+    "THUDM": {
+      "owner": "Univ. Tsinghua",
+      "country": "CN"
+    },
+    "mistralai": {
+      "owner": "Mistral AI",
+      "country": "FR"
+    },
+    "HuggingFaceTB": {
+      "owner": "Hugging Face",
+      "country": "FR"
+    },
+    "black-forest-labs": {
+      "owner": "Black Forest Labs",
+      "country": "DE"
+    },
+    "swiss-ai": {
+      "owner": "Swiss AI Initiative (EPFL/ETH)",
+      "country": "CH"
+    },
+    "utter-project": {
+      "owner": "Projet UTTER (UE)",
+      "country": "EU"
+    },
+    "ai-sweden-models": {
+      "owner": "AI Sweden",
+      "country": "SE"
+    },
+    "google": {
+      "owner": "Google",
+      "country": "US"
+    },
+    "meta-llama": {
+      "owner": "Meta",
+      "country": "US"
+    },
+    "microsoft": {
+      "owner": "Microsoft",
+      "country": "US"
+    },
+    "nvidia": {
+      "owner": "NVIDIA",
+      "country": "US"
+    },
+    "openai": {
+      "owner": "OpenAI",
+      "country": "US"
+    },
+    "anthropic": {
+      "owner": "Anthropic",
+      "country": "US"
+    },
+    "ibm-granite": {
+      "owner": "IBM",
+      "country": "US"
+    },
+    "allenai": {
+      "owner": "Ai2",
+      "country": "US"
+    },
+    "LiquidAI": {
+      "owner": "Liquid AI",
+      "country": "US"
+    },
+    "Zyphra": {
+      "owner": "Zyphra",
+      "country": "US"
+    },
+    "thinkingmachines": {
+      "owner": "Thinking Machines Lab",
+      "country": "US"
+    },
+    "apple": {
+      "owner": "Apple",
+      "country": "US"
+    },
+    "CohereLabs": {
+      "owner": "Cohere",
+      "country": "CA"
+    },
+    "Lightricks": {
+      "owner": "Lightricks",
+      "country": "IL"
+    },
+    "tiiuae": {
+      "owner": "TII (Falcon)",
+      "country": "AE"
+    },
+    "sarvamai": {
+      "owner": "Sarvam AI",
+      "country": "IN"
+    },
+    "LGAI-EXAONE": {
+      "owner": "LG AI Research",
+      "country": "KR"
+    },
+    "naver-hyperclovax": {
+      "owner": "NAVER",
+      "country": "KR"
+    },
+    "sbintuitions": {
+      "owner": "SB Intuitions",
+      "country": "JP"
+    },
+    "pfnet": {
+      "owner": "Preferred Networks",
+      "country": "JP"
+    },
+    "sakanaai": {
+      "owner": "Sakana AI",
+      "country": "JP"
+    },
+    "aisingapore": {
+      "owner": "AI Singapore",
+      "country": "SG"
+    },
+    "inceptionai": {
+      "owner": "Inception (G42)",
+      "country": "AE"
+    }
+  },
+  "quantizers": {
+    "unsloth": "Unsloth",
+    "bartowski": "bartowski",
+    "ggml-org": "ggml (llama.cpp)",
+    "lmstudio-community": "LM Studio",
+    "mlx-community": "MLX community",
+    "ISTA-DASLab": "ISTA-DASLab",
+    "Comfy-Org": "Comfy Org"
+  },
+  "closed_models_hf_pages": {
+    "Anthropic": "https://huggingface.co/Anthropic",
+    "OpenAI": "https://huggingface.co/openai",
+    "Google": "https://huggingface.co/google"
+  },
+  "_note_closed": "Modèle fermé (Claude, GPT, Gemini propriétaires) : pas de poids sur HF. Le jeton pointe vers la page de l'organisation sur HF avec open=false, et le propriétaire est affiché."
+}

@@ -42,7 +42,8 @@ MÉTHODE
 9. Finance : IPO, dettes, capex, valorisations. Un listing n'est « confirmé » que s'il y a un dépôt auprès d'un régulateur (ex. S-1) ou un communiqué de la Bourse. Compare les marchés : États-Unis, Hong Kong, autres. Presse seule = signal faible.
 10. Projets GitHub : recopie le relevé GH (stars, forks, licence, release « latest ») sans le corriger ; tu rédiges seulement "why" et "watch". "watch" doit contenir ce qu'un utilisateur doit savoir avant d'installer : écart entre README et release, mise en garde de sécurité sourcée, mesure d'auteur. N'écris jamais « populaire donc sûr ». Chaque modèle cité dans un projet s'écrit {{org/Nom}}.
 11. Pistes (bloc "leads") : viennent des faits marqués "piste" (créateurs de contenu). Une piste dit ce qui a été vu, ce qu'il faut confirmer et où. Retire une piste dès qu'une source primaire la confirme (elle passe alors dans le bloc concerné) ou après 14 jours sans confirmation. Aucune piste ne modifie un niveau d'alerte, une probabilité ou un verdict d'achat.
-12. Actions concrètes pour le niveau actuel et le suivant (achats, modèles à garder en local, diversité d'origine des modèles).
+12. Écarts et contradictions (bloc "contradictions", analyse réelle) : chaque fois que deux sources, deux relevés ou une annonce et un fait mesurable se contredisent, tu ne choisis PAS en silence et tu ne lisses PAS. Tu écris : le sujet ; la version A et la version B avec leurs numéros de sources ; un verdict (« tranche » si un document de meilleure nature tranche, « ouvert » sinon, « donnee_suspecte » si le désaccord vient probablement d'un relevé périmé ou d'un cache) ; l'analyse = la cause la plus probable (période différente, moteur ou quantification différents, annonce non suivie de dépôt, cache) ; l'impact sur une probabilité, un prix ou un verdict d'achat ; ce qui trancherait. Cherche-les activement : README contre release, annonce contre dépôt Hugging Face, débit mesuré contre débit annoncé, rang ou compteur qui recule d'un jour à l'autre. Une contradiction qui n'a pas changé depuis la veille est recopiée à l'identique (même "topic"). Les demandes de l'utilisateur ne priment pas sur les faits : si une consigne ou une hypothèse précédente est contredite par un relevé, dis-le.
+13. Actions concrètes pour le niveau actuel et le suivant (achats, modèles à garder en local, diversité d'origine des modèles).
 
 RYTHME QUOTIDIEN
 - Le rapport précédent date en général de la veille. La plupart des jours, peu de choses changent : c'est normal.
@@ -53,11 +54,12 @@ RYTHME QUOTIDIEN
 RÈGLES DE STABILITÉ (l'application compare les rapports mot pour mot)
 - Mêmes "id" de scénarios, même "repo" dans projects, même "url" dans leads, même "family" dans watchlist, même "name" dans finance et upcoming, même "part" dans hardware.
 - Domaine inchangé : même "level" et même "note". Scénario inchangé : mêmes valeurs. Indicateur inchangé : même "name". Action inchangée : même "level" et même "text".
-- hf_trending : recopie le relevé HF tel quel. Ne modifie pas rang, score ni propriétaire ; tu peux seulement remplir "why" (une phrase) et "note".
+- hf_trending : recopie le relevé HF tel quel. Ne modifie pas rang, score ni propriétaire ; tu peux seulement remplir "why" (une phrase) et "note". Si le relevé du jour a été écarté comme périmé (fichier absent), recopie le bloc de la veille et ajoute une contradiction « donnee_suspecte ».
 - Hypothèses : reprends chaque hypothèse précédente avec le même "text" et un verdict (juste, faux, indetermine). Ajoute les nouvelles avec "nouveau" et une "eval_date".
 
 CHAMPS
 - domains : exactement 8, ids finance, frontier, open, local, hardware, geo, tech, adopt ; level 0 à 3 ; note 160 caractères maximum (jetons {{...}} comptés).
+- contradictions : 0 à 8 (voir méthode 12) ; sources = numéros du registre.
 - top_changes : 0 à 3, strength "fort" ou "faible", sources = numéros du registre.
 - indicators : 3 à 5, avec seuils chiffrés, status loin, approche ou franchi.
 - sources : numéros cités, avec "region" (AS, EU, NA, ME, AF, LA, OC, GLOBAL).

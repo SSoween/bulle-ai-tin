@@ -38,6 +38,22 @@ def classify(m, owners):
         return labs[org]["owner"], labs[org]["country"], "original"
     return (f"Communauté ({org}) · base {base}" if base else f"Communauté ({org})"), None, "dérivé"
 
+def stale_check(trending, prev_path):
+    """Garde-fou anti-cache : les likes et téléchargements ne baissent pas d'un jour à l'autre (hors dé-likes marginaux).
+    Si un modèle vu la veille a perdu plus de 3 % de likes ou de téléchargements, le relevé est probablement un cache ancien :
+    on le signale et on n'écrit PAS le fichier de sortie (le rapport du jour garde alors le bloc de la veille)."""
+    if not prev_path or not os.path.exists(prev_path): return []
+    prev = json.load(open(prev_path, encoding="utf-8")).get("hf_trending", {})
+    old = {e["id"]: e for k in ("top3", "top3_official") for e in prev.get(k, [])}
+    bad = []
+    for m in trending:
+        o = old.get(m["id"])
+        if not o: continue
+        for field in ("likes", "downloads"):
+            if o.get(field) and m.get(field, 0) < o[field] * 0.97:
+                bad.append(f"{m['id']} : {field} {o[field]} -> {m.get(field)}")
+    return bad
+
 def entry(rank, m, owners):
     owner, country, kind = classify(m, owners)
     e = {"rank": rank, "id": m["id"], "name": m["id"].split("/", 1)[1], "url": "https://huggingface.co/" + m["id"], "owner": owner,
@@ -47,7 +63,7 @@ def entry(rank, m, owners):
     return e
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=os.path.join(HERE, "out", "hf.json")); ap.add_argument("--fixture")
+    ap = argparse.ArgumentParser(); ap.add_argument("--out", default=os.path.join(HERE, "out", "hf.json")); ap.add_argument("--fixture"); ap.add_argument("--prev", help="rapport de la veille (data/AAAA-MM-JJ.json) pour le contrôle de fraîcheur")
     a = ap.parse_args()
     owners = json.load(open(os.path.join(HERE, "owners.json"), encoding="utf-8"))
     watch = json.load(open(os.path.join(HERE, "watchlist.json"), encoding="utf-8"))["watch"]
@@ -56,6 +72,10 @@ def main():
     else: trending = get(API + "?" + urllib.parse.urlencode({"sort": "trendingScore", "limit": 30}))
     trending = [m for m in trending if not m.get("private")]
 
+    bad = stale_check(trending, a.prev)
+    if bad:
+        print("RELEVÉ SUSPECT (cache ancien probable), rien n'est écrit :", *bad, sep="\n  ", file=sys.stderr)
+        sys.exit(3)
     top3 = [entry(i + 1, m, owners) for i, m in enumerate(trending[:3])]
     # « laboratoires officiels » : on saute les dérivés et quantifications, on garde l'ordre de tendance
     official = [m for m in trending if classify(m, owners)[2] == "original"][:3]

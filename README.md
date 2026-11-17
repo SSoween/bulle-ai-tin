@@ -47,3 +47,19 @@ _build/                             scripts qui régénèrent schema, sources et
 2. injecter `watchlist.json` dans `{{WATCHLIST}}` et le registre dans `{{REGISTRY}}` (avec la région) ;
 3. appeler `validate_report.py` dans `publish.py` à la place de la validation v1 ;
 4. fusionner le bloc `hf_trending` du script par-dessus celui du LLM (le script fait foi).
+
+## Contradictions : de l'analyse, pas de l'exécution (v2.1)
+
+Le bloc `contradictions` du rapport (section « Écarts et contradictions », ouverte par défaut) expose chaque désaccord entre sources : version A, version B (avec numéros de sources), verdict (`tranche`, `ouvert`, `donnee_suspecte`), analyse de la cause probable, impact, et ce qui trancherait. Règles :
+
+- Une contradiction n'est jamais lissée ni retirée pour « faire propre » ; elle reste tant que rien ne la tranche.
+- Un relevé scripté périmé ou en échec (cache HF, API GitHub refusée) est consigné comme contradiction, pas masqué (`run.sh` transmet `--hf-status` à `generate.py`).
+- `validate_report.py` avertit si un rapport n'a aucune contradiction (rare en pratique) ou si une contradiction « tranchée » ne cite aucune source.
+- Le prompt de synthèse (règle 12) précise que les demandes ou hypothèses précédentes ne priment pas sur les faits.
+
+## Janus v2
+
+`janus/run.sh` : `hf_snapshot.py --prev` (garde-fou anti-cache) → `gh_snapshot.py` → `fetch_youtube.py` (si `YOUTUBE=1`, sur ton serveur) → `fetch_sources.py` → `generate.py` (les relevés scriptés écrasent toujours le LLM) → `publish.py` (validation, `data/`, `git push`).
+Variables : `JANUS_ENDPOINT`, `JANUS_MODEL`, `GITHUB_TOKEN` (optionnel, jamais commité), `ZONE`, `FOCUS`, `FREQ`.
+
+Classification : Internal use only (L2), source : veille publique (sources.json) sans donnée Ubisoft.

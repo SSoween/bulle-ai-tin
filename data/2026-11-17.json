@@ -1,0 +1,1331 @@
+{
+ "schema": 2,
+ "generator": "Claude (rapport manuel, avant Janus) du 16 au 17 novembre 2026",
+ "date": "2026-11-16",
+ "period": "2026-11-16 → 2026-11-17",
+ "config": {
+  "zone": "Monde, y compris Asie, Europe, Moyen-Orient et Afrique",
+  "focus": "IA locale grand public",
+  "frequence": "quotidien"
+ },
+ "alert": {
+  "level": 2,
+  "label": "TENDU",
+  "summary": "Financement et IPO géantes en vue, mais aucune rupture mesurée : le risque porte sur le retour sur investissement, pas sur la demande. Côté matériel, la pénurie de mémoire est le signal le plus net.",
+  "change_reason": ""
+ },
+ "domains": [
+  {
+   "id": "finance",
+   "name": "Finance et IPO",
+   "level": 2,
+   "note": "IPO géantes attendues (SpaceX, puis OpenAI et Anthropic selon la presse) ; capex à rembourser. Aucune rupture mesurée."
+  },
+  {
+   "id": "frontier",
+   "name": "Modèles de pointe",
+   "level": 1,
+   "note": "Poids ouverts de pointe surtout chinois : {{deepseek-ai/DeepSeek-V4.1-Flash}} (sept.), {{moonshotai/Kimi-K3}} (juin). {{unreleased:Qwen4}} attendu."
+  },
+  {
+   "id": "open",
+   "name": "Modèles ouverts (HF)",
+   "level": 1,
+   "note": "Top 3 Hugging Face : {{MiniMaxAI/MiniMax-H3-Image}}, {{Qwen/Qwen3.8-27B}}, {{Lightricks/LTX-2.5}} ; plus de dérivé communautaire."
+  },
+  {
+   "id": "local",
+   "name": "IA locale",
+   "level": 1,
+   "note": "{{Qwen/Qwen3.8-27B}} : 20 à 75 tok/s sur une carte de 24 à 32 Go avec llama.cpp (écart non expliqué) ; ~122 avec MTP."
+  },
+  {
+   "id": "hardware",
+   "name": "Matériel",
+   "level": 3,
+   "note": "DRAM +10 à 15 % et NAND +15 à 20 % au T4 2026 ; nouvelle hausse attendue au T1 2027 ; RTX 50 Super sans date."
+  },
+  {
+   "id": "geo",
+   "name": "Géopolitique et régulation",
+   "level": 1,
+   "note": "Poids ouverts de pointe surtout chinois ; Europe : Mistral. Sources de politique publique encore à étoffer."
+  },
+  {
+   "id": "tech",
+   "name": "Technologies à venir",
+   "level": 1,
+   "note": "{{unreleased:Qwen4}} : fenêtre annoncée (2-8/11) dépassée, aucun poids officiel ; MTP et NVFP4 accélèrent l'inférence locale."
+  },
+  {
+   "id": "adopt",
+   "name": "Adoption en entreprise",
+   "level": 1,
+   "note": "Aucun signal d'adoption mesuré ce jour : domaine à nourrir (sources entreprise à ajouter)."
+  }
+ ],
+ "top_changes": [
+  {
+   "title": "Hugging Face : le dérivé communautaire quitte le Top 3",
+   "strength": "fort",
+   "domain": "Modèles ouverts",
+   "fact": "{{MiniMaxAI/MiniMax-H3-Image}} passe n°1 (score 912) devant {{Qwen/Qwen3.8-27B}} (491) et {{Lightricks/LTX-2.5}} (394). {{xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic}} (4108 la veille) n'est plus dans les 4 premiers (4e : 375), alors que ses likes ont monté de 7 573 à 9 436.",
+   "mechanism": "Le score de tendance mesure l'attention récente : un pic retombe vite (~). Des likes qui montent pendant que le score s'effondre est inhabituel et fait douter du pic de la veille.",
+   "effect": "Lire le Top 3 officiel comme référence ; considérer le Top 3 général avec prudence tant que les dérivés peuvent le fausser.",
+   "sources": [
+    1
+   ]
+  },
+  {
+   "title": "Qwen4 : la fenêtre annoncée est passée sans dépôt officiel",
+   "strength": "faible",
+   "domain": "Mises à niveau",
+   "fact": "Un agrégateur situait le lancement du 2 au 8/11 ; au 17/11, aucun dépôt {{unreleased:Qwen4}} n'existe dans l'org Qwen (dernier dépôt : 09/10).",
+   "mechanism": "Les dates relayées par des tiers ne viennent pas du laboratoire (~). Le palier reste « teaser ».",
+   "effect": "Ne pas attendre {{unreleased:Qwen4}} pour acheter ou planifier.",
+   "sources": [
+    2,
+    13
+   ]
+  },
+  {
+   "title": "Relevés du jour partiels : API GitHub refusée, cache HF écarté",
+   "strength": "faible",
+   "domain": "Qualité des données",
+   "fact": "Les étoiles et releases GitHub n'ont pas pu être relevées le 17/11 (réponse refusée) : les chiffres affichés sont ceux du 16/11. La première réponse Hugging Face était périmée ; une requête sans cache a donné des données cohérentes.",
+   "mechanism": "Une source qui répond n'est pas une source à jour : les compteurs de likes ne baissent pas d'un jour à l'autre, ce qui permet de détecter un cache (~).",
+   "effect": "Aucun niveau ni verdict d'achat ne repose sur les chiffres non rafraîchis.",
+   "sources": [
+    1,
+    28
+   ]
+  }
+ ],
+ "models": [
+  {
+   "id": "Qwen/Qwen3.8-27B",
+   "name": "Qwen3.8-27B",
+   "owner": "Alibaba",
+   "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+   "country": "CN"
+  },
+  {
+   "id": "Qwen/Qwen3.8-Flash-Next",
+   "name": "Qwen3.8-Flash-Next",
+   "owner": "Alibaba",
+   "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+   "country": "CN"
+  },
+  {
+   "id": "unreleased:Qwen4",
+   "name": "Qwen4 (non publié)",
+   "owner": "Alibaba",
+   "url": "https://huggingface.co/Qwen",
+   "country": "CN"
+  },
+  {
+   "id": "xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+   "name": "DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+   "owner": "Communauté (xtools-at)",
+   "url": "https://huggingface.co/xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic",
+   "base_owner": "Alibaba (Qwen) et DeepSeek"
+  },
+  {
+   "id": "MiniMaxAI/MiniMax-H3-Image",
+   "name": "MiniMax-H3-Image",
+   "owner": "MiniMax",
+   "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+   "country": "CN"
+  },
+  {
+   "id": "deepseek-ai/DeepSeek-V4.1-Flash",
+   "name": "DeepSeek-V4.1-Flash",
+   "owner": "DeepSeek",
+   "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+   "country": "CN"
+  },
+  {
+   "id": "google/gemma-4-31B-it",
+   "name": "Gemma 4 31B",
+   "owner": "Google",
+   "url": "https://huggingface.co/google/gemma-4-31B-it",
+   "country": "US"
+  },
+  {
+   "id": "mistralai/Mistral-Medium-3.5-128B",
+   "name": "Mistral-Medium-3.5-128B",
+   "owner": "Mistral AI",
+   "url": "https://huggingface.co/mistralai/Mistral-Medium-3.5-128B",
+   "country": "FR"
+  },
+  {
+   "id": "mistralai/Shieldstral-1.0-3B",
+   "name": "Shieldstral-1.0-3B",
+   "owner": "Mistral AI",
+   "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
+   "country": "FR"
+  },
+  {
+   "id": "unreleased:Mistral-Large-4",
+   "name": "Mistral Large 4 (non publié)",
+   "owner": "Mistral AI",
+   "url": "https://huggingface.co/mistralai",
+   "country": "FR"
+  },
+  {
+   "id": "moonshotai/Kimi-K3",
+   "name": "Kimi-K3",
+   "owner": "Moonshot AI",
+   "url": "https://huggingface.co/moonshotai/Kimi-K3",
+   "country": "CN"
+  },
+  {
+   "id": "zai-org/GLM-5.3-Flash",
+   "name": "GLM-5.3-Flash",
+   "owner": "Zhipu AI (Z.ai)",
+   "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+   "country": "CN"
+  },
+  {
+   "id": "unsloth/Qwen3.8-27B-GGUF",
+   "name": "Qwen3.8-27B-GGUF (Unsloth)",
+   "owner": "Unsloth",
+   "url": "https://huggingface.co/unsloth/Qwen3.8-27B-GGUF",
+   "base_owner": "Alibaba"
+  },
+  {
+   "id": "Lightricks/LTX-2.5",
+   "name": "LTX-2.5",
+   "owner": "Lightricks",
+   "country": "IL",
+   "url": "https://huggingface.co/Lightricks/LTX-2.5"
+  }
+ ],
+ "hf_trending": {
+  "fetched_at": "2026-11-17T09:00:00Z",
+  "top3": [
+   {
+    "rank": 1,
+    "id": "MiniMaxAI/MiniMax-H3-Image",
+    "name": "MiniMax-H3-Image",
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "owner": "MiniMax",
+    "country": "CN",
+    "kind": "original",
+    "score": 912,
+    "likes": 1412,
+    "downloads": 727110,
+    "task": "text-to-image",
+    "why": "Sortie officielle (dépôt créé le 03/11) : passe n°1 ; le dérivé communautaire du 16/11 sort du Top 3."
+   },
+   {
+    "rank": 2,
+    "id": "Qwen/Qwen3.8-27B",
+    "name": "Qwen3.8-27B",
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "owner": "Alibaba",
+    "country": "CN",
+    "kind": "original",
+    "score": 491,
+    "likes": 20384,
+    "downloads": 6942530,
+    "task": "image-text-to-text"
+   },
+   {
+    "rank": 3,
+    "id": "Lightricks/LTX-2.5",
+    "name": "LTX-2.5",
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "owner": "Lightricks",
+    "country": "IL",
+    "kind": "original",
+    "score": 394,
+    "likes": 12368,
+    "downloads": 2828071,
+    "task": "image-to-video",
+    "why": "Seul laboratoire du Top 3 hors Chine ; modèle vidéo."
+   }
+  ],
+  "top3_official": [
+   {
+    "rank": 1,
+    "id": "MiniMaxAI/MiniMax-H3-Image",
+    "name": "MiniMax-H3-Image",
+    "url": "https://huggingface.co/MiniMaxAI/MiniMax-H3-Image",
+    "owner": "MiniMax",
+    "country": "CN",
+    "kind": "original",
+    "score": 912,
+    "likes": 1412,
+    "downloads": 727110,
+    "task": "text-to-image",
+    "why": "Sortie officielle (dépôt créé le 03/11) : passe n°1 ; le dérivé communautaire du 16/11 sort du Top 3."
+   },
+   {
+    "rank": 2,
+    "id": "Qwen/Qwen3.8-27B",
+    "name": "Qwen3.8-27B",
+    "url": "https://huggingface.co/Qwen/Qwen3.8-27B",
+    "owner": "Alibaba",
+    "country": "CN",
+    "kind": "original",
+    "score": 491,
+    "likes": 20384,
+    "downloads": 6942530,
+    "task": "image-text-to-text"
+   },
+   {
+    "rank": 3,
+    "id": "Lightricks/LTX-2.5",
+    "name": "LTX-2.5",
+    "url": "https://huggingface.co/Lightricks/LTX-2.5",
+    "owner": "Lightricks",
+    "country": "IL",
+    "kind": "original",
+    "score": 394,
+    "likes": 12368,
+    "downloads": 2828071,
+    "task": "image-to-video",
+    "why": "Seul laboratoire du Top 3 hors Chine ; modèle vidéo."
+   }
+  ],
+  "sources": [
+   1
+  ],
+  "note": "Relevé du 17/11 obtenu après contournement d'un cache périmé (voir « Écarts et contradictions »). Les trois modèles sont des publications de laboratoires : le Top 3 officiel et le Top 3 général coïncident aujourd'hui."
+ },
+ "watchlist": [
+  {
+   "family": "Qwen",
+   "owner": "Alibaba",
+   "country": "CN",
+   "latest": {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "date": "2026-08-05"
+   },
+   "next": {
+    "what": "Qwen4",
+    "status": "teaser",
+    "eta": "non annoncée",
+    "note": "En entraînement (annoncé à l'Apsara du 22/09, selon un agrégateur) ; teaser officiel le 06/11. Un aperçu de la version Max de {{unreleased:Qwen4}} serait ouvert depuis le 11/11 : une seule source, non confirmé. L'architecture est déjà dans {{Qwen/Qwen3.8-Flash-Next}} ; aucun poids {{unreleased:Qwen4}} dans l'org officielle. Mise à jour 17/11 : la fenêtre du 2 au 8/11 relayée par un agrégateur est dépassée sans dépôt officiel."
+   },
+   "sources": [
+    2,
+    13
+   ]
+  },
+  {
+   "family": "DeepSeek",
+   "owner": "DeepSeek",
+   "country": "CN",
+   "latest": {
+    "model": "{{deepseek-ai/DeepSeek-V4.1-Flash}}",
+    "date": "2026-09-10"
+   },
+   "next": {
+    "what": "Aucune annonce officielle trouvée",
+    "status": "aucun",
+    "note": "Cadence récente des dépôts officiels sur HF : 4 publications entre le 31/07 et le 10/09, aucune depuis. ~Un prochain palier est plausible mais non annoncé."
+   },
+   "sources": [
+    14
+   ]
+  },
+  {
+   "family": "Gemma",
+   "owner": "Google",
+   "country": "US",
+   "latest": {
+    "model": "{{google/gemma-4-31B-it}}",
+    "date": "2026-03-11"
+   },
+   "next": {
+    "what": "Aucune annonce officielle trouvée",
+    "status": "aucun",
+    "note": "Dernier dépôt majeur de la famille le 11/03 ; aucun signal de successeur."
+   },
+   "sources": [
+    18
+   ]
+  },
+  {
+   "family": "Mistral",
+   "owner": "Mistral AI",
+   "country": "FR",
+   "latest": {
+    "model": "{{mistralai/Shieldstral-1.0-3B}}",
+    "date": "2026-07-16"
+   },
+   "next": {
+    "what": "Mistral Large 4",
+    "status": "rumeur",
+    "eta": "non annoncée",
+    "note": "Un récapitulatif tiers évoque un aperçu daté du 07/10, sans poids : {{unreleased:Mistral-Large-4}}. Non confirmé ; le plus gros modèle ouvert récent reste {{mistralai/Mistral-Medium-3.5-128B}} (mars)."
+   },
+   "sources": [
+    17,
+    24
+   ]
+  },
+  {
+   "family": "Kimi",
+   "owner": "Moonshot AI",
+   "country": "CN",
+   "latest": {
+    "model": "{{moonshotai/Kimi-K3}}",
+    "date": "2026-06-13"
+   },
+   "next": {
+    "what": "Aucune annonce officielle trouvée",
+    "status": "aucun"
+   },
+   "note": "Licence « other » (non standard) ; un tracker tiers situe la sortie en juillet, HF indique la création du dépôt au 13/06.",
+   "sources": [
+    15
+   ]
+  },
+  {
+   "family": "GLM",
+   "owner": "Zhipu AI (Z.ai)",
+   "country": "CN",
+   "latest": {
+    "model": "{{zai-org/GLM-5.3-Flash}}",
+    "date": "2026-08-25"
+   },
+   "next": {
+    "what": "Aucune annonce officielle trouvée",
+    "status": "aucun"
+   },
+   "note": "Licence MIT.",
+   "sources": [
+    16
+   ]
+  }
+ ],
+ "local_ai": {
+  "why": "Débits de {{Qwen/Qwen3.8-27B}} sur une seule carte grand public (24 à 32 Go de VRAM), pas sur du matériel de datacenter. Moteur, quantification et MTP changent tout : ne compare pas d'un test à l'autre.",
+  "results": [
+   {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "hardware": "RTX 5090 (32 Go)",
+    "setup": "llama.cpp",
+    "tps": "~75",
+    "measure": "mesure tierce",
+    "sources": [
+     6
+    ],
+    "ctx": "4k"
+   },
+   {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "hardware": "RTX 4090 (24 Go)",
+    "setup": "llama.cpp",
+    "tps": "~46",
+    "measure": "mesure tierce",
+    "sources": [
+     6
+    ],
+    "ctx": "4k"
+   },
+   {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "hardware": "RTX 3090 (24 Go, occasion)",
+    "setup": "llama.cpp",
+    "tps": "~40",
+    "measure": "mesure tierce",
+    "sources": [
+     6
+    ],
+    "ctx": "4k",
+    "note": "La plus abordable des trois : la bande passante mémoire compte plus que la génération."
+   },
+   {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "hardware": "RTX 5090 (32 Go)",
+    "setup": "NVFP4 + MTP",
+    "tps": "~122",
+    "measure": "tutoriel, hors réglages par défaut",
+    "sources": [
+     7
+    ],
+    "note": "Moyenne annoncée ; pointes à ~170. À vérifier sur ton matériel."
+   },
+   {
+    "model": "{{Qwen/Qwen3.8-27B}}",
+    "hardware": "RTX 5090 (32 Go)",
+    "setup": "llama.cpp sans MTP",
+    "tps": "~20",
+    "measure": "mesure tierce",
+    "sources": [
+     5
+    ],
+    "note": "Écart d'un facteur 4 avec la première ligne : l'auteur juge que le moteur, pas la VRAM, limite."
+   },
+   {
+    "model": "{{Qwen/Qwen3.8-Flash-Next}}",
+    "hardware": "RTX 5070 (12 Go) + 64 Go de RAM",
+    "setup": "Strata, Unsloth UD-Q4_K_XL (111 Go)",
+    "tps": "~7 à 8,5",
+    "measure": "mesure d'auteur",
+    "sources": [
+     25
+    ],
+    "note": "Le modèle dépasse la VRAM et la RAM : les experts rares sont lus depuis le SSD. Marqué expérimental par l'auteur du moteur."
+   }
+  ],
+  "gap": "Aucun résultat trouvé pour les cartes de 16 Go ni pour les portables à mémoire unifiée : à chercher en priorité."
+ },
+ "hardware": {
+  "parts": [
+   {
+    "part": "RAM",
+    "trend": "up",
+    "change": "+10 à 15 % (DRAM, contrats T4 2026)",
+    "note": "Offre tendue en 2027 et écart offre/demande qui s'élargit (TrendForce) ; Counterpoint voit une nouvelle hausse au T1 2027, à rythme ralenti.",
+    "sources": [
+     3,
+     4
+    ]
+   },
+   {
+    "part": "SSD",
+    "trend": "up",
+    "change": "+15 à 20 % (NAND, contrats T4 2026)",
+    "note": "SSD entreprise en accélération au T4. Pour 2027, TrendForce voit l'offre NAND se détendre : la hausse pourrait s'arrêter avant celle de la DRAM.",
+    "sources": [
+     3,
+     4
+    ]
+   },
+   {
+    "part": "GPU",
+    "trend": "up",
+    "change": "prix de rue en hausse",
+    "note": "GamersNexus : prix au-delà de ceux de février 2026. RTX 50 Super : retards signalés, sans annonce NVIDIA ; un module GDDR7 de 3 Go coûterait ~3 fois celui de 2 Go (rumeur).",
+    "sources": [
+     8,
+     9,
+     23
+    ]
+   }
+  ],
+  "decisions": [
+   {
+    "part": "RAM",
+    "verdict": "acheter",
+    "buy_now": "Évite une à deux hausses trimestrielles (T4 puis T1). 128 Go est la cible de ton playbook pour les modèles MoE.",
+    "wait": "Coût probablement plus élevé au T1 2027 ; aucune baisse annoncée avant 2027.",
+    "trigger": "Contrats DRAM en recul deux trimestres de suite, ou nouvelle capacité confirmée.",
+    "sources": [
+     3,
+     4
+    ]
+   },
+   {
+    "part": "SSD",
+    "verdict": "partiel",
+    "buy_now": "N'acheter que la capacité nécessaire (un gros GGUF pèse ~110 Go) : NAND +15 à 20 % au T4.",
+    "wait": "La NAND pourrait se détendre en 2027 : attendre est défendable pour la capacité non urgente.",
+    "trigger": "Contrats NAND stables un trimestre, ou baisse des prix de détail.",
+    "sources": [
+     3
+    ]
+   },
+   {
+    "part": "GPU",
+    "verdict": "acheter",
+    "buy_now": "Si le besoin est confirmé : aucun relais à attendre, les RTX 50 Super n'ont ni date ni prix officiels et les prix montent.",
+    "wait": "Risque de payer plus cher ; l'arrivée de cartes de 18 à 24 Go reste une rumeur.",
+    "trigger": "Annonce officielle NVIDIA ou AMD avec prix, ou prix de rue qui retombent durablement.",
+    "sources": [
+     8,
+     9,
+     23
+    ]
+   }
+  ],
+  "reco": "Si le besoin local est réel : RAM et GPU maintenant, SSD au juste nécessaire. Sinon, n'achète pas par peur : seule la NAND offre un gain probable à l'attente. Ce n'est pas un conseil financier."
+ },
+ "finance": [
+  {
+   "name": "IPO SpaceX",
+   "kind": "IPO",
+   "value": "Présentée comme la plus grande IPO de l'histoire ; lue comme un test de l'appétit des investisseurs pour l'IA.",
+   "status": "surveille",
+   "sources": [
+    11
+   ]
+  },
+  {
+   "name": "OpenAI et Anthropic en file d'attente",
+   "kind": "IPO",
+   "value": "Un listing d'Anthropic est évoqué dès mi-novembre (~2 000 Md$) ; OpenAI viserait plutôt 2027.",
+   "status": "surveille",
+   "note": "Agrégateurs seulement, aucun dépôt S-1 vérifié : signal faible. Un investisseur alerte sur la valorisation d'Anthropic.",
+   "sources": [
+    11,
+    12
+   ]
+  },
+  {
+   "name": "Zhipu et MiniMax cotées à Hong Kong",
+   "kind": "IPO",
+   "value": "Cotées en janvier 2026, avant toute IA américaine ; MiniMax a pris 109 % au premier jour.",
+   "status": "ok",
+   "note": "Prix actuels non vérifiés (rapports de février à mars). Vue de l'Asie sur la bulle.",
+   "sources": [
+    19,
+    20
+   ]
+  },
+  {
+   "name": "Retour sur investissement du capex",
+   "kind": "capex",
+   "value": "IoT Analytics ne voit pas de bulle aujourd'hui ; le risque systémique serait l'amortissement des centres de données.",
+   "status": "surveille",
+   "sources": [
+    10
+   ]
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "correction-douce",
+   "name": "Correction douce des valeurs IA (−20 à −30 %)",
+   "p30": {
+    "v": 8,
+    "lo": 3,
+    "hi": 15
+   },
+   "p90": {
+    "v": 18,
+    "lo": 8,
+    "hi": 30
+   },
+   "p1y": {
+    "v": 40,
+    "lo": 25,
+    "hi": 55
+   },
+   "confidence": 1,
+   "trigger": "Une IPO IA majeure sous-souscrite ou reportée.",
+   "justification": "~Jugement d'analyste, pas un modèle : IPO géantes à venir [11], valorisation contestée [12], mais analyse opposée sur l'absence de bulle [10]."
+  },
+  {
+   "id": "ipo-fenetre-fermee",
+   "name": "Fenêtre d'IPO qui se ferme",
+   "p30": {
+    "v": 10,
+    "lo": 4,
+    "hi": 18
+   },
+   "p90": {
+    "v": 20,
+    "lo": 10,
+    "hi": 32
+   },
+   "p1y": {
+    "v": 35,
+    "lo": 20,
+    "hi": 50
+   },
+   "confidence": 1,
+   "trigger": "Report officiel d'une IPO IA ou dépôt S-1 retiré.",
+   "justification": "→ La file d'attente (SpaceX, puis OpenAI et Anthropic) dépend d'un marché ouvert [11]. Hong Kong a déjà servi de refuge à des IA chinoises [19]."
+  },
+  {
+   "id": "penurie-memoire",
+   "name": "Pénurie de mémoire prolongée jusqu'en 2027 et au-delà",
+   "p30": {
+    "v": 70,
+    "lo": 55,
+    "hi": 80
+   },
+   "p90": {
+    "v": 80,
+    "lo": 65,
+    "hi": 90
+   },
+   "p1y": {
+    "v": 85,
+    "lo": 70,
+    "hi": 92
+   },
+   "confidence": 2,
+   "trigger": "Une hausse contractuelle au T1 2027, ou une annonce de capacité retardée.",
+   "justification": "Hausses déjà publiées au T4 2026 [3] et attendues au T1 2027 [4]. Écart : la NAND pourrait se détendre en 2027 [3]."
+  },
+  {
+   "id": "open-weights-rattrape",
+   "name": "Un modèle à poids ouverts rattrape le meilleur modèle fermé",
+   "p30": {
+    "v": 20,
+    "lo": 10,
+    "hi": 35
+   },
+   "p90": {
+    "v": 40,
+    "lo": 25,
+    "hi": 55
+   },
+   "p1y": {
+    "v": 65,
+    "lo": 45,
+    "hi": 80
+   },
+   "confidence": 1,
+   "trigger": "Sortie de {{unreleased:Qwen4}} avec poids ouverts, ou nouveau palier d'un laboratoire chinois.",
+   "justification": "~Cadence rapide des laboratoires chinois sur HF [14][15][16] ; {{unreleased:Qwen4}} annoncé mais non publié [2][13]. Définition de « rattrape » à fixer."
+  }
+ ],
+ "impacts": [
+  {
+   "scenario_id": "correction-douce",
+   "gpu": 1,
+   "ram": 1,
+   "ssd": 1,
+   "cloud": 2,
+   "local": 0,
+   "invest": 3
+  },
+  {
+   "scenario_id": "ipo-fenetre-fermee",
+   "gpu": 0,
+   "ram": 0,
+   "ssd": 0,
+   "cloud": 2,
+   "local": 0,
+   "invest": 3
+  },
+  {
+   "scenario_id": "penurie-memoire",
+   "gpu": 3,
+   "ram": 3,
+   "ssd": 2,
+   "cloud": 1,
+   "local": 3,
+   "invest": 1
+  },
+  {
+   "scenario_id": "open-weights-rattrape",
+   "gpu": 1,
+   "ram": 1,
+   "ssd": 0,
+   "cloud": 2,
+   "local": 3,
+   "invest": 2
+  }
+ ],
+ "indicators": [
+  {
+   "name": "Prix contractuels DRAM",
+   "current": "+10 à 15 % au T4 2026 ; nouvelle hausse négociée pour le T1 2027",
+   "up": "hausse > 20 % par trimestre",
+   "down": "recul deux trimestres de suite",
+   "status": "approche"
+  },
+  {
+   "name": "Prix contractuels NAND",
+   "current": "+15 à 20 % au T4 2026 ; offre attendue plus souple en 2027",
+   "up": "hausse > 25 % par trimestre",
+   "down": "contrats stables un trimestre",
+   "status": "approche"
+  },
+  {
+   "name": "Fenêtre d'IPO IA",
+   "current": "SpaceX d'abord ; OpenAI et Anthropic en attente (presse)",
+   "up": "report ou sous-souscription d'une IPO majeure",
+   "down": "IPO réussie et cours stable à 30 jours",
+   "status": "approche"
+  },
+  {
+   "name": "Retour sur investissement du capex",
+   "current": "pas de bulle selon IoT Analytics ; amortissement à surveiller",
+   "up": "capex relevé sans hausse des revenus cloud",
+   "down": "revenus cloud IA qui rattrapent le capex",
+   "status": "loin"
+  },
+  {
+   "name": "Prix des GPU grand public",
+   "current": "en hausse ; RTX 50 Super sans date",
+   "up": "pénurie confirmée par NVIDIA ou ses partenaires",
+   "down": "annonce officielle avec prix, stocks qui reviennent",
+   "status": "approche"
+  }
+ ],
+ "upcoming": [
+  {
+   "name": "AMD Ryzen AI Halo et Microsoft Project Zenith",
+   "owner": "AMD et Microsoft",
+   "country": "US",
+   "eta": "annoncé, date non confirmée",
+   "confidence": 1,
+   "note": "192 Go de mémoire unifiée dont jusqu'à 160 Go pour le GPU, 273 Go/s (veille Deep Field du 16/11). Données de fabricant, à confirmer.",
+   "sources": [
+    21,
+    22
+   ]
+  },
+  {
+   "name": "RTX 50 Super",
+   "owner": "NVIDIA",
+   "country": "US",
+   "eta": "indéterminée",
+   "confidence": 1,
+   "note": "Retard et annulation évoqués par des rumeurs, sans annonce NVIDIA. Goulot : la GDDR7 de 3 Go.",
+   "sources": [
+    8,
+    23
+   ]
+  },
+  {
+   "name": "MTP et NVFP4 pour l'inférence locale",
+   "owner": "Communauté (llama.cpp, NVIDIA)",
+   "eta": "disponible, maturité variable",
+   "confidence": 2,
+   "note": "Jusqu'à ~122 tok/s pour {{Qwen/Qwen3.8-27B}} sur RTX 5090 selon un tutoriel, contre ~20 sans MTP chez Tom's Hardware : à vérifier sur ton matériel.",
+   "sources": [
+    5,
+    7
+   ]
+  }
+ ],
+ "actions": [
+  {
+   "level": 2,
+   "text": "RAM : acheter maintenant si le besoin est confirmé (128 Go pour les modèles MoE) ; ne pas attendre une baisse avant 2027.",
+   "status": "afaire",
+   "priority": "urgent"
+  },
+  {
+   "level": 2,
+   "text": "SSD : n'acheter que la capacité nécessaire aux GGUF ; la NAND pourrait se détendre en 2027.",
+   "status": "afaire",
+   "priority": "mois"
+  },
+  {
+   "level": 2,
+   "text": "GPU : ne pas attendre les RTX 50 Super, aucune date officielle.",
+   "status": "afaire",
+   "priority": "mois"
+  },
+  {
+   "level": 2,
+   "text": "Garder en local au moins un modèle ouvert chinois et un modèle d'une autre origine, pour ne pas dépendre d'une seule source.",
+   "status": "afaire",
+   "priority": "plus_tard"
+  },
+  {
+   "level": 2,
+   "text": "Ne pas planifier sur une rumeur de sortie : attendre un dépôt officiel dans l'org du laboratoire.",
+   "status": "interdit"
+  },
+  {
+   "level": 3,
+   "text": "Si N3 : geler les achats non essentiels et privilégier le matériel déjà amorti.",
+   "status": "afaire",
+   "priority": "plus_tard"
+  }
+ ],
+ "hypotheses": [
+  {
+   "text": "Les prix de la mémoire resteront orientés à la hausse au T1 2027.",
+   "verdict": "nouveau",
+   "eval_date": "2027-02-15"
+  },
+  {
+   "text": "{{unreleased:Qwen4}} publie des poids ouverts dans l'org Qwen avant fin 2026.",
+   "verdict": "nouveau",
+   "eval_date": "2026-12-31"
+  },
+  {
+   "text": "Le n°1 tendance de Hugging Face reste un dérivé communautaire d'ici une semaine.",
+   "verdict": "nouveau",
+   "eval_date": "2026-11-23"
+  },
+  {
+   "text": "Un listing d'Anthropic a lieu avant fin 2026.",
+   "verdict": "nouveau",
+   "comment": "Une seule famille de sources (agrégateurs) : à confirmer par un dépôt S-1.",
+   "eval_date": "2026-12-31"
+  }
+ ],
+ "sources": [
+  {
+   "n": 1,
+   "title": "API tendances (trendingScore)",
+   "publisher": "Hugging Face",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/api/models?sort=trendingScore&limit=10",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 2,
+   "title": "Fiche Qwen3.8-Flash-Next (architecture qwen4_exp)",
+   "publisher": "Hugging Face / Alibaba",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 3,
+   "title": "TrendForce : prix contractuels T4 2026",
+   "publisher": "TrendForce (Taïwan)",
+   "region": "AS",
+   "url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+   "date": "2026-09-30"
+  },
+  {
+   "n": 4,
+   "title": "Memory price tracker, novembre",
+   "publisher": "Counterpoint Research",
+   "region": "AS",
+   "url": "https://counterpointresearch.com/cn/reports/memory-price-tracker-november",
+   "date": "2026-11"
+  },
+  {
+   "n": 5,
+   "title": "Qwen 3.8 27B sur RTX 5090 : le moteur, pas la VRAM, limite",
+   "publisher": "Tom's Hardware",
+   "region": "NA",
+   "url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/benchmarking-qwen-3-8-27b-on-rtx-5090-and-beyond-vram-capacity-alone-cant-overcome-severe-software-and-inference-engine-bottlenecks"
+  },
+  {
+   "n": 6,
+   "title": "Qwen3.8 27B : tests matériel (RTX 5090, 4090, 3090)",
+   "publisher": "Hardware Corner",
+   "region": "GLOBAL",
+   "url": "https://www.hardware-corner.net/qwen3-8-27b-hardware-tests/"
+  },
+  {
+   "n": 7,
+   "title": "Exécuter Qwen3.8 27B en local (NVFP4 + MTP)",
+   "publisher": "DataCamp",
+   "region": "GLOBAL",
+   "url": "https://www.datacamp.com/tutorial/how-to-run-qwen3-8-27b-locally"
+  },
+  {
+   "n": 8,
+   "title": "RTX 50 Super prêtes mais bloquées par le prix de la GDDR7 (rumeur)",
+   "publisher": "Tom's Hardware",
+   "region": "NA",
+   "url": "https://www.tomshardware.com/pc-components/gpus/nvidia-rtx-50-super-gpus-are-reportedly-ready-but-stuck-in-limbo-due-to-excessive-gddr7-pricing-3gb-gddr7-module-costs-triple-the-price-of-2gb"
+  },
+  {
+   "n": 9,
+   "title": "NVIDIA Has GPUs If You Have Coin",
+   "publisher": "GamersNexus",
+   "region": "NA",
+   "url": "https://gamersnexus.net/gpus/nvidia-has-gpus-if-you-have-coin"
+  },
+  {
+   "n": 10,
+   "title": "Analyse du risque de bulle IA",
+   "publisher": "IoT Analytics (Allemagne)",
+   "region": "EU",
+   "url": "https://iot-analytics.com/?p=228947"
+  },
+  {
+   "n": 11,
+   "title": "Craintes de bulle IA et IPO SpaceX",
+   "publisher": "The Next Web (Pays-Bas)",
+   "region": "EU",
+   "url": "https://thenextweb.com/news/ai-bubble-fears-spacex-ipo-software-selloff"
+  },
+  {
+   "n": 12,
+   "title": "Alerte d'un investisseur sur la valorisation d'Anthropic",
+   "publisher": "Webull (agrégateur)",
+   "region": "NA",
+   "url": "https://www.webull.com/news/15734780806571008"
+  },
+  {
+   "n": 13,
+   "title": "Alibaba teases Qwen4 as downloads reach 942 million",
+   "publisher": "AF.NET (agrégateur)",
+   "region": "GLOBAL",
+   "url": "https://af.net/realtime/alibaba-teases-qwen4-as-downloads-reach-942-million/"
+  },
+  {
+   "n": 14,
+   "title": "Dépôt DeepSeek-V4.1-Flash (MIT)",
+   "publisher": "Hugging Face / DeepSeek",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+   "date": "2026-09-10"
+  },
+  {
+   "n": 15,
+   "title": "Dépôt Kimi-K3",
+   "publisher": "Hugging Face / Moonshot AI",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/moonshotai/Kimi-K3",
+   "date": "2026-06-13"
+  },
+  {
+   "n": 16,
+   "title": "Dépôt GLM-5.3-Flash (MIT)",
+   "publisher": "Hugging Face / Zhipu AI",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/zai-org/GLM-5.3-Flash",
+   "date": "2026-08-25"
+  },
+  {
+   "n": 17,
+   "title": "Dépôts récents de l'org mistralai",
+   "publisher": "Hugging Face / Mistral AI",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/mistralai",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 18,
+   "title": "Dépôt Gemma 4 31B",
+   "publisher": "Hugging Face / Google",
+   "region": "GLOBAL",
+   "url": "https://huggingface.co/google/gemma-4-31B-it",
+   "date": "2026-03-11"
+  },
+  {
+   "n": 19,
+   "title": "Des startups d'IA chinoises devancent leurs rivales américaines en Bourse (Hong Kong)",
+   "publisher": "BusinessDay (Nigeria)",
+   "region": "AF",
+   "url": "https://businessday.ng/technology/article/chinese-ai-startups-beat-u-s-rivals-to-market-with-hong-kong-ipos/"
+  },
+  {
+   "n": 20,
+   "title": "MiniMax bondit de 109 % à ses débuts à Hong Kong",
+   "publisher": "The Express Tribune (Pakistan)",
+   "region": "AS",
+   "url": "https://tribune.com.pk/story/2586325/chinese-ai-unicorn-minimax-soars-109-percent-in-hong-kong-debut"
+  },
+  {
+   "n": 21,
+   "title": "Meet the next AMD Ryzen AI Halo",
+   "publisher": "AMD",
+   "region": "NA",
+   "url": "https://www.amd.com/en/blogs/2026/meet-the-next-amd-ryzen-ai-halo.html"
+  },
+  {
+   "n": 22,
+   "title": "Microsoft Project Zenith sur AMD Ryzen AI Halo",
+   "publisher": "Noobfeed",
+   "region": "GLOBAL",
+   "url": "https://www.noobfeed.com/hardware/microsoft-project-zenith-amd-ryzen-ai-halo"
+  },
+  {
+   "n": 23,
+   "title": "RTX 50 Super : retard possible, priorité à l'IA",
+   "publisher": "Notebookcheck (Allemagne)",
+   "region": "EU",
+   "url": "https://www.notebookcheck.net/RTX-50-Super-GPUs-may-be-delayed-indefinitely-as-Nvidia-prioritizes-AI-during-memory-shortage.1199980.0.html"
+  },
+  {
+   "n": 24,
+   "title": "Récapitulatif des modèles ouverts (mentionne un aperçu Mistral Large 4)",
+   "publisher": "braindetox.kr (agrégateur coréen)",
+   "region": "AS",
+   "url": "https://braindetox.kr/hub/open_weight_llm.html"
+  },
+  {
+   "n": 25,
+   "title": "Strata v0.1.31 : notes de version (Qwen3.8-Flash-Next sur RTX 5070 12 Go)",
+   "publisher": "Niko1221 (Strata)",
+   "region": "GLOBAL",
+   "url": "https://github.com/Niko1221/Strata/releases/tag/v0.1.31",
+   "date": "2026-10-01"
+  },
+  {
+   "n": 26,
+   "title": "Strata : dépôt et README",
+   "publisher": "Niko1221 (Strata)",
+   "region": "GLOBAL",
+   "url": "https://github.com/Niko1221/Strata",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 27,
+   "title": "Colibri : dépôt et README",
+   "publisher": "JustVugg (Colibri)",
+   "region": "GLOBAL",
+   "url": "https://github.com/JustVugg/colibri",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 28,
+   "title": "llama.cpp : dépôt (API GitHub)",
+   "publisher": "ggml-org",
+   "region": "GLOBAL",
+   "url": "https://github.com/ggml-org/llama.cpp",
+   "date": "2026-11-16"
+  },
+  {
+   "n": 29,
+   "title": "Unsloth : dépôt (API GitHub)",
+   "publisher": "unslothai",
+   "region": "GLOBAL",
+   "url": "https://github.com/unslothai/unsloth",
+   "date": "2026-11-16"
+  }
+ ],
+ "coverage": {
+  "note": "Rapport d'exemple compilé à la main, sans les sources asiatiques officielles du registre (blogs Qwen et DeepSeek, TrendForce, SK hynix, HKEX) : la part d'Asie est donc sous la cible d'un tiers. Les pages Hugging Face et GitHub comptées « mondial » concernent surtout des laboratoires et auteurs hors États-Unis. Aucune source d'Amérique latine ni d'Océanie. La chaîne YouTube d'Eliott Meunier (Europe) n'est pas encore branchée : aucune piste ce jour."
+ },
+ "caveat": "Les relevés GitHub du 17/11 sont absents (chiffres du 16/11 reportés) et le relevé HF a dû être refait sans cache. Les contradictions « ouvertes » le restent faute de source primaire ; l'analyse des causes est une inférence (~). Probabilités = jugement, pas modèle. Aucune actualité du 17/11 (IPO, prix mémoire) n'a été rechargée : ces blocs sont identiques à la veille.",
+ "projects": [
+  {
+   "name": "Strata",
+   "repo": "https://github.com/Niko1221/Strata",
+   "owner": "Niko1221",
+   "kind": "Moteur d'inférence local (application de bureau + terminal)",
+   "license": "MIT",
+   "stars": 44700,
+   "forks": 4900,
+   "version": "app 0.2.15 (README)",
+   "why": "API compatible OpenAI et Anthropic en local, branchée sur Claude Code, Codex CLI et OpenCode. Recommande d'abord les quantifications ISTA-DASLab, puis Unsloth, pour {{Qwen/Qwen3.8-Flash-Next}} sur carte NVIDIA, AMD, Intel Arc, Apple Silicon ou Ryzen AI Max.",
+   "watch": "La release marquée « latest » sur GitHub est v0.1.31 (01/10), alors que le README annonce l'app 0.2.15 : installe depuis la page Releases ou le script officiel et vérifie la version. 749 tickets et 775 PR ouverts : projet très actif, donc changeant. Un rapport tiers évoque une faille d'appel au serveur local depuis une page web (non vérifié) : lis SECURITY.md avant d'exposer le serveur. Relevé du 17/11 indisponible (API GitHub refusée) : chiffres du 16/11.",
+   "links": [
+    {
+     "label": "Releases",
+     "url": "https://github.com/Niko1221/Strata/releases/latest"
+    },
+    {
+     "label": "Sécurité",
+     "url": "https://github.com/Niko1221/Strata/blob/main/SECURITY.md"
+    },
+    {
+     "label": "Modèles et mémoire requise",
+     "url": "https://github.com/Niko1221/Strata/blob/main/docs/MODELS.md"
+    },
+    {
+     "label": "Benchmarks communautaires",
+     "url": "https://github.com/Niko1221/Strata/blob/main/docs/COMMUNITY_BENCHMARKS.md"
+    }
+   ],
+   "sources": [
+    26,
+    25
+   ]
+  },
+  {
+   "name": "Colibri",
+   "repo": "https://github.com/JustVugg/colibri",
+   "owner": "JustVugg",
+   "kind": "Moteur MoE en C pur : les experts sont lus depuis le disque",
+   "license": "Apache-2.0",
+   "stars": 50400,
+   "forks": 5900,
+   "version": "v2.1.0 (README)",
+   "why": "Fait tourner un modèle GLM de 744 Md de paramètres avec ~25 Go de RAM, et {{zai-org/GLM-5.3-Flash}}. Prend aussi en charge {{deepseek-ai/DeepSeek-V4.1-Flash}}, {{moonshotai/Kimi-K3}}, {{Qwen/Qwen3.8-27B}} et {{Qwen/Qwen3.8-Flash-Next}}. Moteur en C, sans Python à l'exécution.",
+   "watch": "Mesures d'auteur (README) très basses sans gros matériel : 0,05 à 0,1 tok/s à froid sur un portable de 25 Go, 1,83 tok/s sur un Ryzen AI Max+ de 128 Go, ~9 tok/s sur 6 RTX 5090. C'est une preuve de faisabilité, pas un usage interactif. La release « latest » est v2.0.0 (06/10), le README annonce la v2.1.0. Relevé du 17/11 indisponible (API GitHub refusée) : chiffres du 16/11.",
+   "links": [
+    {
+     "label": "Releases",
+     "url": "https://github.com/JustVugg/colibri/releases/latest"
+    },
+    {
+     "label": "Benchmarks",
+     "url": "https://github.com/JustVugg/colibri/blob/main/docs/benchmarks.md"
+    }
+   ],
+   "sources": [
+    27
+   ]
+  },
+  {
+   "name": "llama.cpp",
+   "repo": "https://github.com/ggml-org/llama.cpp",
+   "owner": "ggml-org",
+   "kind": "Moteur d'inférence de référence (C/C++)",
+   "license": "MIT",
+   "stars": 126236,
+   "forks": 22424,
+   "why": "Socle de la plupart des outils locaux (format GGUF, quantifications) : c'est le moteur derrière les débits mesurés de {{Qwen/Qwen3.8-27B}} plus haut.",
+   "watch": "Environ 2 300 tickets ouverts. Un test de Tom's Hardware juge que le moteur, plus que la VRAM, limite les débits sur RTX 5090 : suivre les versions (MTP, NVFP4). Relevé du 17/11 indisponible (API GitHub refusée) : chiffres du 16/11.",
+   "links": [
+    {
+     "label": "Releases",
+     "url": "https://github.com/ggml-org/llama.cpp/releases"
+    }
+   ],
+   "sources": [
+    28,
+    5
+   ]
+  },
+  {
+   "name": "Unsloth",
+   "repo": "https://github.com/unslothai/unsloth",
+   "owner": "unslothai",
+   "kind": "Interface locale, fine-tuning et quantifications GGUF",
+   "license": "Apache-2.0",
+   "stars": 75735,
+   "forks": 6894,
+   "why": "Interface locale pour exécuter et entraîner des modèles. Ses quantifications sont celles que recommande Strata après ISTA-DASLab, par exemple {{unsloth/Qwen3.8-27B-GGUF}} (6,5 M de téléchargements).",
+   "links": [
+    {
+     "label": "Releases",
+     "url": "https://github.com/unslothai/unsloth/releases"
+    }
+   ],
+   "sources": [
+    29
+   ],
+   "watch": " Relevé du 17/11 indisponible (API GitHub refusée) : chiffres du 16/11."
+  }
+ ],
+ "leads": [],
+ "contradictions": [
+  {
+   "topic": "Relevé Hugging Face du 17/11 : deux réponses incompatibles",
+   "a": {
+    "claim": "Première réponse (liste de 12) : {{deepseek-ai/DeepSeek-V4.1-Flash}} en tête et {{Qwen/Qwen3.8-27B}} à 18 503 likes.",
+    "sources": [
+     1
+    ]
+   },
+   "b": {
+    "claim": "Réponse sans cache : {{MiniMaxAI/MiniMax-H3-Image}} n°1 et {{Qwen/Qwen3.8-27B}} à 20 384 likes. L'appel direct à la fiche du modèle donne encore 20 137, en retard sur la liste.",
+    "sources": [
+     1
+    ]
+   },
+   "verdict": "donnee_suspecte",
+   "analysis": "Les likes ne baissent pas d'un jour à l'autre : 18 503 est inférieur aux 20 140 du 16/11, donc la première réponse est périmée (cache). Même la fiche individuelle (20 137) est en retard sur la liste (20 384) : deux caches différents côté API (~). On retient la réponse sans cache, cohérente avec la veille.",
+   "impact": "Le Top 3 du jour repose sur la réponse sans cache. Sans ce contrôle, le bulletin aurait annoncé à tort un nouveau n°1 officiel.",
+   "resolve": "Garde-fou intégré à Janus (hf_snapshot.py --prev) : un relevé dont les compteurs reculent est écarté et consigné ici au lieu d'être publié."
+  },
+  {
+   "topic": "Dérivé n°1 le 16/11, hors du Top 4 le 17/11, mais +1 863 likes",
+   "a": {
+    "claim": "{{xtools-at/DeepSeek-V4-Pro-Qwen3.5-9B-UNCENSORED-heretic}} : score 4108 et 7 573 likes le 16/11.",
+    "sources": [
+     1
+    ]
+   },
+   "b": {
+    "claim": "Le 17/11 : 9 436 likes (+25 %) mais absent du Top 4 (4e score : 375). Rapport likes/téléchargements du 16/11 : 7 573 pour 27 037, contre 20 140 pour 6,5 millions sur {{Qwen/Qwen3.8-27B}}.",
+    "sources": [
+     1
+    ]
+   },
+   "verdict": "donnee_suspecte",
+   "analysis": "Un modèle de 9 Md de paramètres avec presque autant de likes que de téléchargements divisés par 4 est atypique : l'engagement semble gonflé ou concentré en un pic (~, inférence non prouvée). Le classement du 16/11 était donc peut-être trompeur.",
+   "impact": "Le Top 3 général n'est pas une mesure de qualité ni d'adoption ; le Top 3 des laboratoires reste la référence pour repérer les vraies sorties.",
+   "resolve": "Courbe des likes sur 3 à 7 jours : un pic isolé confirmerait l'effet de campagne ou de lien externe."
+  },
+  {
+   "topic": "Prochaine génération Qwen : dates annoncées non tenues",
+   "a": {
+    "claim": "Un agrégateur situe le lancement dans la semaine du 2 au 8/11 et un aperçu de la version Max le 11/11.",
+    "sources": [
+     13
+    ]
+   },
+   "b": {
+    "claim": "Aucun dépôt officiel {{unreleased:Qwen4}} dans l'org Qwen ; le plus récent dépôt de l'org date du 09/10. Seule l'architecture « qwen4_exp » est dans {{Qwen/Qwen3.8-Flash-Next}}.",
+    "sources": [
+     2
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Un teaser n'est pas une date : les fenêtres relayées par les agrégateurs ne viennent pas du laboratoire (~). Palier retenu : teaser, pas preview. L'absence de dépôt au 17/11 contredit « semaine du 2 au 8/11 » ; elle ne contredit pas une sortie plus tardive.",
+   "impact": "Ne rien acheter ni retarder un achat pour {{unreleased:Qwen4}} : aucune date fiable. Confiance de l'entrée « à venir » maintenue à 1.",
+   "resolve": "Un dépôt officiel dans l'org Qwen sur Hugging Face (poids), ou une date publiée par Alibaba."
+  },
+  {
+   "topic": "Débit du 27B de Qwen sur RTX 5090 : 20, 75 ou 122 tok/s ?",
+   "a": {
+    "claim": "~75 tok/s (llama.cpp, contexte 4k) et ~122 tok/s (NVFP4 + MTP, moyenne annoncée par un tutoriel).",
+    "sources": [
+     6,
+     7
+    ]
+   },
+   "b": {
+    "claim": "~20 tok/s avec llama.cpp sans MTP sur la même carte ; l'auteur juge que le moteur, pas la VRAM, limite.",
+    "sources": [
+     5
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Même carte et même moteur donnent 20 et 75 : l'écart vient plutôt de la version du moteur, du contexte, de l'offload ou de la quantification, que les sources ne détaillent pas (~). Les 122 tok/s exigent un réglage hors défaut (NVFP4 + MTP).",
+   "impact": "Ne pas lire « 75 tok/s » comme un débit garanti : fourchette honnête 20 à 75 sur llama.cpp par défaut. La note du domaine IA locale (« 40 à 75 ») est donc optimiste.",
+   "resolve": "Un test reproductible sur ton matériel avec version du moteur, quantification et contexte notés, ou une mesure tierce détaillée."
+  },
+  {
+   "topic": "Strata : le README annonce plus que la release",
+   "a": {
+    "claim": "Le README annonce l'application 0.2.15.",
+    "sources": [
+     26
+    ]
+   },
+   "b": {
+    "claim": "La release « latest » sur GitHub est v0.1.31 (01/10).",
+    "sources": [
+     25
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Le README avance sur les versions publiées : soit les builds récents sont diffusés hors du canal « release » (~), soit le suivi des releases est en retard. Même schéma que Colibri (README v2.1.0, latest v2.0.0), donc probablement une habitude de ces projets plutôt qu'un cas isolé.",
+   "impact": "Une installation « depuis les releases » peut ne pas correspondre à ce que décrit le README (fonctions, correctifs de sécurité). Ne pas s'appuyer sur le nombre d'étoiles pour juger la maturité.",
+   "resolve": "Liste des releases et journal des changements du dépôt ; relevé GitHub du jour (refusé par l'API le 17/11)."
+  },
+  {
+   "topic": "Colibri : « 744 Md sur 25 Go de RAM » contre 0,05 à 0,1 tok/s",
+   "a": {
+    "claim": "Le projet met en avant un modèle GLM de 744 Md de paramètres avec ~25 Go de RAM.",
+    "sources": [
+     27
+    ]
+   },
+   "b": {
+    "claim": "Mesures d'auteur dans le même README : 0,05 à 0,1 tok/s à froid sur un portable de 25 Go (soit 3 à 6 tokens par minute), ~9 tok/s sur 6 RTX 5090.",
+    "sources": [
+     27
+    ]
+   },
+   "verdict": "tranche",
+   "analysis": "Les deux sont vrais et ne se contredisent pas : le modèle tourne, mais pas de façon utilisable. Le titre décrit la faisabilité, la mesure décrit l'usage.",
+   "impact": "Colibri n'est pas une option d'IA locale quotidienne sur matériel grand public ; il ne change aucun verdict d'achat.",
+   "resolve": "Un débit interactif (>5 tok/s) mesuré par un tiers sur une machine de moins de 64 Go."
+  },
+  {
+   "topic": "Domaine « adoption » noté 1 alors qu'aucune donnée n'existe",
+   "a": {
+    "claim": "Le domaine adoption en entreprise affiche le niveau 1 (carte de chaleur).",
+    "sources": []
+   },
+   "b": {
+    "claim": "Sa propre note dit : « aucun signal d'adoption mesuré ce jour ».",
+    "sources": []
+   },
+   "verdict": "ouvert",
+   "analysis": "Le schéma impose un niveau 0 à 3 et n'a pas de valeur « non évalué » : le 1 est un défaut, pas une mesure. C'est une faiblesse du rapport lui-même, pas du monde.",
+   "impact": "Ne pas lire ce 1 comme un signal. Le niveau global N2 ne s'appuie pas sur ce domaine.",
+   "resolve": "Ajouter des sources d'adoption en entreprise ; prévoir une valeur « non évalué » dans le schéma."
+  },
+  {
+   "topic": "Listing d'Anthropic « dès mi-novembre »",
+   "a": {
+    "claim": "Des agrégateurs évoquent un listing dès mi-novembre (~2 000 Md$).",
+    "sources": [
+     11,
+     12
+    ]
+   },
+   "b": {
+    "claim": "Aucun dépôt auprès d'un régulateur (S-1) n'a été vérifié ; un investisseur alerte sur la valorisation.",
+    "sources": [
+     12
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Presse et agrégateurs ne valent pas dépôt réglementaire : tant qu'il n'y a pas de S-1, ce n'est pas un événement daté (~). « Mi-novembre » est atteint le 17/11 sans confirmation.",
+   "impact": "Le niveau N2 ne monte pas sur ce signal. Un listing reporté ou sous-souscrit serait en revanche un signal N3.",
+   "resolve": "Un dépôt S-1 public ou un communiqué de la Bourse."
+  }
+ ]
+}

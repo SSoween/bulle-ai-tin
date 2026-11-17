@@ -26,6 +26,7 @@
     "upcoming",
     "projects",
     "leads",
+    "contradictions",
     "coverage",
     "caveat"
   ],
@@ -1162,6 +1163,88 @@
           }
         }
       }
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topic",
+          "a",
+          "b",
+          "verdict",
+          "analysis",
+          "impact",
+          "resolve"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string"
+          },
+          "a": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "maxLength": 300
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "b": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "claim"
+            ],
+            "properties": {
+              "claim": {
+                "type": "string",
+                "maxLength": 300
+              },
+              "sources": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "tranche",
+              "ouvert",
+              "donnee_suspecte"
+            ]
+          },
+          "analysis": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "impact": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "resolve": {
+            "type": "string",
+            "maxLength": 300
+          }
+        }
+      },
+      "maxItems": 8
     },
     "coverage": {
       "type": "object",

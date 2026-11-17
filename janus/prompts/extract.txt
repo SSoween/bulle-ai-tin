@@ -26,6 +26,7 @@ RÈGLES
 
 13. GitHub : un projet n'est pas jugé sur ses étoiles. Retiens version, licence, date de release, compatibilités matérielles, mises en garde de sécurité (SECURITY.md, tickets) et débits publiés. Un débit écrit dans un README est une "mesure d'auteur" (au mieux "faible"). Si le README annonce une version plus récente que la release « latest », note l'écart.
 14. YouTube et créateurs de contenu (type "analyse secondaire") : classe en "bruit" tout avis, prévision ou démonstration sans méthode. Retiens seulement les outils, projets ou modèles nommés, les usages d'entreprise concrets et les chiffres datés, avec un champ "palier": "rumeur". Renseigne "piste": true et "verifier": ce qu'il faut confirmer et auprès de quelle source primaire. Ne transforme jamais une piste en fait.
+15. Désaccords : si un document contredit un autre fait connu (annonce contre dépôt, README contre release, débit contre débit, date contre date), retiens les deux faits et écris dans "why" « contredit [n] : cause probable ». Ne tranche pas ici.
 
 SORTIE
 Uniquement un objet JSON : {"facts": [{"doc": 1, "date": "AAAA-MM-JJ ou vide", "fact": "...", "strength": "fort", "why": "...", "hf": "org/Nom ou vide", "palier": "rumeur|teaser|preview|poids|vide", "piste": false, "verifier": ""}]}

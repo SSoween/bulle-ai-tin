@@ -105,7 +105,7 @@ function parseReport(text) {
   if (!r.alert || typeof r.alert.level !== 'number' || r.alert.level < 0 || r.alert.level > 4)
     throw new Error('Champ "alert.level" manquant (0 à 4).');
   if (r.schema != null && r.schema !== 2) throw new Error('Version de schéma non prise en charge : ' + r.schema + ' (attendu : 2)');
-  ['domains', 'top_changes', 'scenarios', 'impacts', 'indicators', 'actions', 'hypotheses', 'sources', 'models', 'watchlist', 'upcoming', 'finance', 'projects', 'leads']
+  ['domains', 'top_changes', 'scenarios', 'impacts', 'indicators', 'actions', 'hypotheses', 'sources', 'models', 'watchlist', 'upcoming', 'finance', 'projects', 'leads', 'contradictions']
     .forEach(k => { if (!Array.isArray(r[k])) r[k] = []; });
   ['hf_trending', 'local_ai', 'hardware', 'coverage'].forEach(k => { if (!r[k] || typeof r[k] !== 'object') r[k] = {}; });
   return r;
@@ -166,6 +166,7 @@ function render() {
   app.append(hero(cur, prev));
   app.append(heatCard(cur, prev));
   app.append(topChanges(cur, prev));
+  app.append(contraSec(cur, prev));
   app.append(hfSec(cur, prev));
   app.append(watchSec(cur, prev));
   app.append(localSec(cur, prev));
@@ -295,6 +296,32 @@ function topChanges(cur, prev) {
   });
   if (!els.length) els.push(h('p', 'mut', 'Peu de mouvement : = IDEM'));
   return section('Top 3 des changements', cur.top_changes.length ? (prev ? cur.top_changes.length : null) : 0, els, true);
+}
+
+/* --- écarts et contradictions : chaque désaccord entre sources est exposé, analysé et tranché (ou laissé ouvert) --- */
+const CVERDICT = { tranche: ['TRANCHÉ', 'fort'], ouvert: ['OUVERT', 'faible'], donnee_suspecte: ['DONNÉE SUSPECTE', 'faible'] };
+function contraSec(cur, prev) {
+  const d = diffList(cur.contradictions, prev && prev.contradictions, x => x.topic, x => J([x.a, x.b, x.verdict, x.analysis]));
+  let n = 0;
+  const els = [h('p', 'intro', 'Quand deux sources se contredisent, on ne choisit pas en silence : on expose les deux versions, on cherche la cause probable et on dit ce qui trancherait.')];
+  d.forEach(({ it, changed }) => {
+    if (prev && changed) n++;
+    const v = CVERDICT[it.verdict] || CVERDICT.ouvert;
+    const c = h('div', 'it' + (prev && changed ? ' chg' : ''));
+    add(c, add(h('div', 'r1'), h('span', 'nm', it.topic), h('span', 'chip ' + v[1], v[0])));
+    [['A', it.a], ['B', it.b]].forEach(([k, x]) => {
+      if (!x) return;
+      const p = add(h('p'), h('span', 'k', k + ' : '), rich(cur, x.claim));
+      c.append(p);
+      const rf = srcRefs(cur, [], x.sources); if (rf) c.append(rf);
+    });
+    if (it.analysis) add(c, add(h('p'), h('span', 'k', 'Analyse : '), rich(cur, it.analysis)));
+    if (it.impact) add(c, add(h('p'), h('span', 'k', 'Impact : '), rich(cur, it.impact)));
+    if (it.resolve) add(c, add(h('p', 'mut warnline'), h('b', null, 'Ce qui trancherait : '), rich(cur, it.resolve)));
+    els.push(c);
+  });
+  if (!arr(cur.contradictions).length) els.push(h('p', 'mut', 'Aucun écart relevé : à vérifier, une veille sans désaccord est rare.'));
+  return section('Écarts et contradictions', prev ? n : null, els, true);
 }
 
 /* --- Hugging Face : top 3 tendance avec variation à J-1 --- */

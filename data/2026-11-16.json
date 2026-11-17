@@ -1165,5 +1165,119 @@
    ]
   }
  ],
- "leads": []
+ "leads": [],
+ "contradictions": [
+  {
+   "topic": "Prochaine génération Qwen : dates annoncées non tenues",
+   "a": {
+    "claim": "Un agrégateur situe le lancement dans la semaine du 2 au 8/11 et un aperçu de la version Max le 11/11.",
+    "sources": [
+     13
+    ]
+   },
+   "b": {
+    "claim": "Aucun dépôt officiel {{unreleased:Qwen4}} dans l'org Qwen ; le plus récent dépôt de l'org date du 09/10. Seule l'architecture « qwen4_exp » est dans {{Qwen/Qwen3.8-Flash-Next}}.",
+    "sources": [
+     2
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Un teaser n'est pas une date : les fenêtres relayées par les agrégateurs ne viennent pas du laboratoire (~). Palier retenu : teaser, pas preview. L'absence de dépôt au 17/11 contredit « semaine du 2 au 8/11 » ; elle ne contredit pas une sortie plus tardive.",
+   "impact": "Ne rien acheter ni retarder un achat pour {{unreleased:Qwen4}} : aucune date fiable. Confiance de l'entrée « à venir » maintenue à 1.",
+   "resolve": "Un dépôt officiel dans l'org Qwen sur Hugging Face (poids), ou une date publiée par Alibaba."
+  },
+  {
+   "topic": "Débit du 27B de Qwen sur RTX 5090 : 20, 75 ou 122 tok/s ?",
+   "a": {
+    "claim": "~75 tok/s (llama.cpp, contexte 4k) et ~122 tok/s (NVFP4 + MTP, moyenne annoncée par un tutoriel).",
+    "sources": [
+     6,
+     7
+    ]
+   },
+   "b": {
+    "claim": "~20 tok/s avec llama.cpp sans MTP sur la même carte ; l'auteur juge que le moteur, pas la VRAM, limite.",
+    "sources": [
+     5
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Même carte et même moteur donnent 20 et 75 : l'écart vient plutôt de la version du moteur, du contexte, de l'offload ou de la quantification, que les sources ne détaillent pas (~). Les 122 tok/s exigent un réglage hors défaut (NVFP4 + MTP).",
+   "impact": "Ne pas lire « 75 tok/s » comme un débit garanti : fourchette honnête 20 à 75 sur llama.cpp par défaut. La note du domaine IA locale (« 40 à 75 ») est donc optimiste.",
+   "resolve": "Un test reproductible sur ton matériel avec version du moteur, quantification et contexte notés, ou une mesure tierce détaillée."
+  },
+  {
+   "topic": "Strata : le README annonce plus que la release",
+   "a": {
+    "claim": "Le README annonce l'application 0.2.15.",
+    "sources": [
+     26
+    ]
+   },
+   "b": {
+    "claim": "La release « latest » sur GitHub est v0.1.31 (01/10).",
+    "sources": [
+     25
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Le README avance sur les versions publiées : soit les builds récents sont diffusés hors du canal « release » (~), soit le suivi des releases est en retard. Même schéma que Colibri (README v2.1.0, latest v2.0.0), donc probablement une habitude de ces projets plutôt qu'un cas isolé.",
+   "impact": "Une installation « depuis les releases » peut ne pas correspondre à ce que décrit le README (fonctions, correctifs de sécurité). Ne pas s'appuyer sur le nombre d'étoiles pour juger la maturité.",
+   "resolve": "Liste des releases et journal des changements du dépôt ; relevé GitHub du jour (refusé par l'API le 17/11)."
+  },
+  {
+   "topic": "Colibri : « 744 Md sur 25 Go de RAM » contre 0,05 à 0,1 tok/s",
+   "a": {
+    "claim": "Le projet met en avant un modèle GLM de 744 Md de paramètres avec ~25 Go de RAM.",
+    "sources": [
+     27
+    ]
+   },
+   "b": {
+    "claim": "Mesures d'auteur dans le même README : 0,05 à 0,1 tok/s à froid sur un portable de 25 Go (soit 3 à 6 tokens par minute), ~9 tok/s sur 6 RTX 5090.",
+    "sources": [
+     27
+    ]
+   },
+   "verdict": "tranche",
+   "analysis": "Les deux sont vrais et ne se contredisent pas : le modèle tourne, mais pas de façon utilisable. Le titre décrit la faisabilité, la mesure décrit l'usage.",
+   "impact": "Colibri n'est pas une option d'IA locale quotidienne sur matériel grand public ; il ne change aucun verdict d'achat.",
+   "resolve": "Un débit interactif (>5 tok/s) mesuré par un tiers sur une machine de moins de 64 Go."
+  },
+  {
+   "topic": "Domaine « adoption » noté 1 alors qu'aucune donnée n'existe",
+   "a": {
+    "claim": "Le domaine adoption en entreprise affiche le niveau 1 (carte de chaleur).",
+    "sources": []
+   },
+   "b": {
+    "claim": "Sa propre note dit : « aucun signal d'adoption mesuré ce jour ».",
+    "sources": []
+   },
+   "verdict": "ouvert",
+   "analysis": "Le schéma impose un niveau 0 à 3 et n'a pas de valeur « non évalué » : le 1 est un défaut, pas une mesure. C'est une faiblesse du rapport lui-même, pas du monde.",
+   "impact": "Ne pas lire ce 1 comme un signal. Le niveau global N2 ne s'appuie pas sur ce domaine.",
+   "resolve": "Ajouter des sources d'adoption en entreprise ; prévoir une valeur « non évalué » dans le schéma."
+  },
+  {
+   "topic": "Listing d'Anthropic « dès mi-novembre »",
+   "a": {
+    "claim": "Des agrégateurs évoquent un listing dès mi-novembre (~2 000 Md$).",
+    "sources": [
+     11,
+     12
+    ]
+   },
+   "b": {
+    "claim": "Aucun dépôt auprès d'un régulateur (S-1) n'a été vérifié ; un investisseur alerte sur la valorisation.",
+    "sources": [
+     12
+    ]
+   },
+   "verdict": "ouvert",
+   "analysis": "Presse et agrégateurs ne valent pas dépôt réglementaire : tant qu'il n'y a pas de S-1, ce n'est pas un événement daté (~). « Mi-novembre » est atteint le 17/11 sans confirmation.",
+   "impact": "Le niveau N2 ne monte pas sur ce signal. Un listing reporté ou sous-souscrit serait en revanche un signal N3.",
+   "resolve": "Un dépôt S-1 public ou un communiqué de la Bourse."
+  }
+ ]
 }

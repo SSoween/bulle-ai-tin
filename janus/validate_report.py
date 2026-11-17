@@ -89,6 +89,11 @@ def main():
         if cnt.get("NA", 0) / tot > tg.get("NA_max", 1): warns.append(f"Amérique du Nord {cnt.get('NA',0)}/{tot} au-dessus du plafond {tg['NA_max']:.0%}")
     except OSError: pass
 
+    if not r.get("contradictions"):
+        warns.append("aucune contradiction analysée : une veille sans désaccord entre sources est rare, vérifier que rien n'a été lissé")
+    for c in r.get("contradictions", []):
+        if c.get("verdict") == "tranche" and not (c["a"].get("sources") or c["b"].get("sources")):
+            warns.append(f"contradiction « {c['topic']} » tranchée sans source citée")
     for w in warns: print("AVERTISSEMENT", w)
     for e in errs: print("ERREUR", e)
     print(f"{len(errs)} erreur(s), {len(warns)} avertissement(s) ; régions : {dict(sorted(cnt.items()))}")

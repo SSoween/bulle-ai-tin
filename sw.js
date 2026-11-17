@@ -1,6 +1,6 @@
 // Service worker : app shell en cache-first, données (data/*.json) en network-first.
-const VERSION = 'bulletin-v1'; // à incrémenter à chaque modification des fichiers de l'app
-const SHELL = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'icons/icon.svg'];
+const VERSION = 'bulletin-v2'; // à incrémenter à chaque modification des fichiers de l'app
+const SHELL = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
